@@ -1,56 +1,58 @@
 var keys = {
-	up = false,
-	left = false,
-	down = false,
-	right = false,
-	b = false,
-	a = false,
-	aJustPressed = false,
+	up: false,
+	left: false,
+	down: false,
+	right: false,
+	b: false,
+	a: false,
+	aJustPressed: false
 },
 
 constants = {
-	WIDTH = 800,
-	HEIGHT = 552,
-	FPS = 50,
-	MAX_X_WALKING_VELOCITY = 5,
-	MAX_X_RUNNING_VELOCITY = 9,
-	RUNNING_ACCELERATION = .7,
-	WALKING_ACCELERATION = .7,
-	GRAVITY = 1,
-	FRICTION = .3,
-	JUMPING_FORCE = 7,
-	MIN_JUMP_FRAMES = 3, // Minimum number of frames that a jump will increase y velocity for
-	MAX_JUMP_FRAMES = 5, // Maximum number of frames that y velocity can be increased for
+	WIDTH: 800,
+	HEIGHT: 552,
+	FPS: 50,
+	MAX_X_WALKING_VELOCITY: 5,
+	MAX_X_RUNNING_VELOCITY: 9,
+	RUNNING_ACCELERATION: .7,
+	WALKING_ACCELERATION: .7,
+	GRAVITY: 1,
+	FRICTION: .3,
+	JUMPING_FORCE: 7,
+	MIN_JUMP_FRAMES: 3, // Minimum number of frames that a jump will increase y velocity for
+	MAX_JUMP_FRAMES: 5 // Maximum number of frames that y velocity can be increased for
 },
 
 createBlocky = function(x, y) {
 
-        _ = {};
-		_.xPos = x;
-		_.yPos = y;
-		_.xVel = 0;
-		_.yVel = 0;
+    _ = {
+        xPos: x,
+        yPos: y,
+        xVel: 0,
+        yVel: 0,
 
-		// Current number of frames spent jumping
-		_.currentJumpFrames = 0;
+        // Current number of frames spent jumping
+        currentJumpFrames: 0,
 
-		// True if player is still holding jump button during a jump
-		_.holdingJump = false;
+        // True if player is still holding jump button during a jump
+        holdingJump: false,
 
-		_.framesLeft = 0;
+        framesLeft: 0,
 
-		_.spriteX = 0;
-		_.spriteY = 0;
-	},
+        spriteX: 0,
+        spriteY: 0
+    };
 
-	createHTML: function() {
+    var self = {};
+    
+	self.createHTML = function() {
     	$("#frame").append("<div id='blocky'></div>");
 
 		_.container = $("#blocky");
 		return _.container;
 	},
 
-	update: function() {
+	self.update = function() {
 		// Jump initiate
 		if (_.yPos == 0 && keys.a && !_.holdingJump && keys.aJustPressed) {
 			_.currentJumpFrames = 1;
@@ -81,18 +83,18 @@ createBlocky = function(x, y) {
 
 		if (keys.left && !(keys.down && _.yPos == 0)) {
 			if (keys.b) {
-				blocky.xVel = Math.max(blocky.xVel - constants.RUNNING_ACCELERATION, -constants.MAX_X_RUNNING_VELOCITY);
+				_.xVel = Math.max(_.xVel - constants.RUNNING_ACCELERATION, -constants.MAX_X_RUNNING_VELOCITY);
 			}
 			else {
-				blocky.xVel = Math.max(blocky.xVel - constants.WALKING_ACCELERATION, -constants.MAX_X_WALKING_VELOCITY);
+				_.xVel = Math.max(_.xVel - constants.WALKING_ACCELERATION, -constants.MAX_X_WALKING_VELOCITY);
 			}
 		}
 		if (keys.right && !(keys.down && _.yPos == 0)) {
 			if (keys.b) {
-				blocky.xVel = Math.min(blocky.xVel + constants.RUNNING_ACCELERATION, constants.MAX_X_RUNNING_VELOCITY);
+				_.xVel = Math.min(_.xVel + constants.RUNNING_ACCELERATION, constants.MAX_X_RUNNING_VELOCITY);
 			}
 			else {
-				blocky.xVel = Math.min(blocky.xVel + constants.WALKING_ACCELERATION, constants.MAX_X_WALKING_VELOCITY);
+				_.xVel = Math.min(_.xVel + constants.WALKING_ACCELERATION, constants.MAX_X_WALKING_VELOCITY);
 			}
 		}
 
@@ -119,9 +121,11 @@ createBlocky = function(x, y) {
 		}
 	},
 
-	render: function() {
-		_.container.left(_.xPos);
-		_.container.top((constants.HEIGHT - _.yPos) - 180);
+	self.render = function() {
+        _.container.css({
+            top: (constants.HEIGHT - _.yPos) - 180,
+            left: _.xPos
+        });
 
 		// Change direction faced if necessary
 		if (keys.left) {
@@ -178,39 +182,39 @@ createBlocky = function(x, y) {
 		}
 
 		_.container.css('backgroundPosition', -(_.spriteX * 128) + "px " + -(_.spriteY * 128) + "px");
-	}
-});
+	};
+
+    return self;
+};
 
 $(document).ready(function() {
-
 	$("#frame").height(constants.HEIGHT);
 
-    $(document).on('keydown', keyDown);
-    $(document).on('keyup', keyUp);
+    $(document).on('keydown', keyDown)
+    .on('keyup', keyUp);
 
 	// Make Blocky
 	blocky = createBlocky(constants.WIDTH / 2, 0);
 
-	setInterval(loop, 1000 / constants.FPS);
+    blocky.createHTML();
+	setInterval(function() {    
+        blocky.update();
+        blocky.render();
+    }, 1000 / constants.FPS);
 });
-
-
-// Loop that keeps the game running
-function loop() {
-	blocky.update();
-	blocky.render();
-}
 
 function keyDown(e) {
     var keyType = getKeyType(e.keyCode);
     keys[keyType] = true;
-    // handle aJustPressed wtf mate
+    
+    if (keyType == 'a') {
+        keys.aJustPressed = true;
+    }
 }
 
 function keyUp(e) {
     var keyType = getKeyType(e.keyCode);
     keys[keyType] = false;
-    // handle aJustPressed wtf mate
 }
 
 function getKeyType(keyCode) {
@@ -226,4 +230,5 @@ function getKeyType(keyCode) {
         case 76:
             return 'a';
     }
+    return 'error';
 }
