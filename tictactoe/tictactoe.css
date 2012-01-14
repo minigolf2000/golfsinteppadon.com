@@ -1,0 +1,116 @@
+.cloud {
+	overflow: auto;
+}
+
+#gamearea {
+	float: left;
+	width: 200px;
+	margin-left: 280px;
+	text-align: center;
+}
+
+#sidebar {
+	float: left;
+	width: 200px;
+	margin-left: 20px;
+	padding-top: 130px;
+	line-height: 1.7em;
+}
+
+#gameboard {
+	margin: 20px auto;
+	position: relative;
+	height: 180px;
+	width: 180px;
+	background-image: url(tictactoe.png);
+	cursor: pointer;
+}
+
+#gameboard div {
+	position: absolute;
+	margin: 1px;
+	display: inline;
+	height: 59px;
+	width: 59px;
+}
+
+#demoCell {
+	height: 59px;
+	background-repeat: none;
+	padding-left: 60px;
+	padding-top: 15px;
+	margin-top: 40px;
+}
+
+h4 {
+	padding-left: 5px;
+}
+
+#gameboard .x, #demoCell.x {
+	background: url(x.png) no-repeat;
+}
+
+#gameboard .o, #demoCell.o {
+	background: url(o.png) no-repeat;
+}
+
+#gameboard .highlightred {
+	background-image: url(xTransparent.png);
+}
+
+#gameboard .highlightblue {
+	background-image: url(oTransparent.png);
+}
+
+#message {
+	margin-top: 15px;
+	font-size: 22px;
+	height: 30px;
+}
+
+.red {
+	color: red;
+}
+
+.blue {
+	color: blue;
+}
+
+#1player, #2player {
+	float: left;
+}
+
+button.disabled {
+	background-color: #CCCCCC;
+	color: #777777;
+	border: 2px solid #777777;
+	padding: 2px 10px;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+#reset, button.notDisabled {
+	border: 2px solid #005278;
+	background: #005278;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3989a4), to(#005278));
+	background: -moz-linear-gradient(top, #3989a4, #005278);
+	padding: 2px 10px;
+	text-shadow: rgba(0,0,0,.4) 0 1px 0;
+	color: white;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+#reset:hover, button.notDisabled:hover {
+	background: #28597a;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+#reset:active, button.notDisabled:active {
+	background: #1b435e;
+}
+
+#debug {
+	clear: both;
+}

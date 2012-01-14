@@ -1,0 +1,88 @@
+#controls {
+	text-align: center;
+}
+
+#timer {
+	text-align: right;
+	margin-right: 20px;
+}
+
+#frame {
+	width: 80%;
+	border: 1px solid #555555;
+	margin: 40px auto;
+	position: relative;
+	background-color: white;
+	color: #005280;
+}
+
+#korean, .fan {
+	width: 45px;
+	height: 60px;
+	position: absolute;
+	background-repeat: none;
+}
+
+#korean {
+	background-image: url("images/korean.png");
+}
+
+.fan {
+	background-image: url("images/fan.png");
+}
+
+#highscores {
+	width: 250px;
+	margin: 0px auto;
+	background-color: white;
+	border: 1px solid #005280;
+	font-family: "Courier New", monospace;
+	padding: 10px;
+	font-size: 1.1em;
+}
+
+#highscoreCaption {
+	font-weight: bold;
+	margin-top: 0px;
+	padding-left: 10px;
+}
+
+li {
+	list-style-type: inherit;
+}
+.score {
+	float: right;
+	margin-left: 20px;
+}
+
+.newRecord {
+	font-weight: bold;
+}
+
+#playButtonDiv {
+	text-align: center;
+}
+
+#playButton {
+	background-color: white;
+	border: 2px solid #005280;
+	padding: 3px 5px;
+	cursor: pointer;
+}
+
+input[type="text"] {
+	border: none;
+	text-transform: uppercase;
+	border-bottom: 10px solid #005280;
+	font-size: 2em;
+	font-family: "Courier New", monospace;
+	width: 120px;
+}
+
+#message {
+	color: #005280;
+	font-size: 2em;
+	font-weight: bold;
+	margin-top: 50px;
+	text-align: center;
+}

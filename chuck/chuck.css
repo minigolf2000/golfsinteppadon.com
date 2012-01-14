@@ -1,0 +1,48 @@
+h2 {
+	line-height: 1.2em;
+}
+
+.cloud > p {
+	margin-bottom: 70px;
+}
+
+fieldset {
+	margin-top: 90px 0px;
+	padding: 30px;
+	border: 1px solid #404140;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+}
+
+legend {
+	margin-left: 100px;
+	color: white; /* IE */
+}
+
+.fact {
+	display: none;
+}
+
+.fact.visible {
+	display: inline;
+}
+
+#nextfact {
+	cursor: pointer;
+	color: #4DCBF4;
+	font-weight: bold;
+}
+
+#nextfact:hover {
+	text-decoration: underline;
+}
+
+input {
+	background-color: transparent;
+	border: none;
+	border-bottom: 3px dotted white;
+	font-size: 2em;
+	margin-left: 10px;
+	min-width: 100px;
+	color: #F9FF60;
+}
