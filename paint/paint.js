@@ -16,19 +16,19 @@ eraser.src = "eraserCursor.png";
 
 Event.observe(window, 'load', function() {
 	if (!$("canvas").getContext) return; // Browser does not support Canvas
-	
+
 	// Setup canvas
 	ctx = $("canvas").getContext("2d");
-	
+
 	// Setup listeners
 	Event.observe('canvas', 'mousedown', mouseDown);
 	Event.observe(document, 'mouseup', mouseUp);
 	Event.observe(document, 'mousemove', mouseMove);
-	
+
 	// Set global variables
 	offsetY = $("canvas").offsetTop;
 	offsetX = $("canvas").offsetLeft;
-	
+
 	var img = document.createElement("img");
 	img.src = "save.png";
 	img.alt = "";
@@ -38,17 +38,17 @@ Event.observe(window, 'load', function() {
 	save.onclick = saveImage;
 	save.appendChild(img);
 	$("tools").appendChild(save);
-	
+
 	// Setup tools
 	setupToolbar();
-	
+
 });
 
 function setupToolbar() {
 
 	var tools = ["pencil", "eraser", "floodFill", "stamp"];
 	var table = document.createElement("table");
-	
+
 	var tr;
 	for (var i = 0; i < tools.length; i++) {
 		if (i % 2 == 0)
@@ -67,7 +67,7 @@ function setupToolbar() {
 		}
 	}
 	$("tools").appendChild(table);
-	
+
 	var img = document.createElement("img");
 	img.src = "undo.png";
 	img.alt = "";
@@ -77,7 +77,7 @@ function setupToolbar() {
 	undo.onclick = revertState;
 	undo.appendChild(img);
 	$("tools").appendChild(undo);
-	
+
 	// Setup colors
 	var colors = ["0, 0, 0",
 				  "80, 80, 80",
@@ -100,35 +100,35 @@ function setupToolbar() {
 	var table = document.createElement("table");
 	for (var i = 0; i < colors.length;) {
 		var tr = document.createElement("tr");
-		
+
 		var td = document.createElement("td");
 		if (i == 0) td.id = "black";
 		td.style.backgroundColor = "rgb(" + colors[i++] + ")";
 		td.onclick = changeColor;
 		tr.appendChild(td);
-		
+
 		var td2 = document.createElement("td");
 		td2.style.backgroundColor = "rgb(" + colors[i++] + ")";
 		td2.onclick = changeColor;
 		tr.appendChild(td2);
-		
+
 		table.appendChild(tr);
 	}
-	
+
 	$("colors").appendChild(table);
-	
+
 	var currentColor = document.createElement("div");
 	currentColor.id = "currentColor";
 	$("colors").appendChild(currentColor);
-	
+
 	// Set defaults
 	ctx.fillStyle = "white";
 	ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 	$("pencil").onclick();
 	$("black").onclick();
 	undoStack.push(ctx.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT));
-	
-	// Set box mouseovers	
+
+	// Set box mouseovers
 	var hoverBoxes = $$("td, #tools div");
 	for (var i = 0; i < hoverBoxes.length; i++) {
 		hoverBoxes[i].onmouseover = boxMouseOver;
@@ -140,19 +140,19 @@ function mouseDown(e) {
 	dragging = true;
 	var currentX = e.pageX - offsetX;
 	var currentY = e.pageY - offsetY;
-	
+
 	switch (currentTool) {
-	
+
 	case "pencil":
 		ctx.fillRect(currentX - 1, currentY - 1, 2, 2);
 		break;
-		
+
 	case "eraser":
 		ctx.beginPath();
 		ctx.arc(currentX, currentY, 8, 0, Math.PI * 2, false);
 		ctx.fill();
 		break;
-	
+
 	case "floodFill":
 		var imageData = ctx.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 		var index = currentX * 4 + currentY * 4 * CANVAS_WIDTH;
@@ -161,7 +161,7 @@ function mouseDown(e) {
 		var oldG = pix[index + 1];
 		var oldB = pix[index + 2];
 		var newR, newG, newB;
-		
+
 		var colors = ctx.fillStyle
 		// Safari, Chrome - colors is in form rgb(x, x, x)
 		if (colors.length > 7) {
@@ -177,10 +177,10 @@ function mouseDown(e) {
 			newB = parseInt(colors.substring(5, 7), 16);
 		}
 		floodFill(pix, index, oldR, oldG, oldB, newR, newG, newB);
-		
+
 		ctx.putImageData(imageData, 0, 0);
 		break;
-		
+
 	default:
 		ctx.drawImage(stamp, currentX - 64, currentY - 44);
 		break;
@@ -275,7 +275,7 @@ function changeColor() {
 
 function changeTool() {
 	currentTool = this.id;
-	
+
 	switch (currentTool) {
 	case "pencil":
 		$("canvas").style.cursor = "url(pencil.png) 0 16, crosshair";
@@ -284,7 +284,7 @@ function changeTool() {
 		ctx.lineWidth = 2;
 		ctx.lineCap = "butt";
 		break;
-	
+
 	case "eraser":
 		$("canvas").style.cursor = "url(eraserCursor.png) 8 8, crosshair";
 		ctx.fillStyle = "white";
@@ -292,12 +292,12 @@ function changeTool() {
 		ctx.lineWidth = 16;
 		ctx.lineCap = "round";
 		break;
-	
+
 	case "floodFill":
 		ctx.fillStyle = $("currentColor").style.backgroundColor;
 		$("canvas").style.cursor = "url(floodFill.png) 14 11, crosshair";
 		break;
-	
+
 	default:
 		$("canvas").style.cursor = "url(lilypad.png) 64 44, crosshair";
 		break;
