@@ -4,8 +4,7 @@ var keys = {
 	down: false,
 	right: false,
 	b: false,
-	a: false,
-	aJustPressed: false
+	a: false
 },
 
 constants = {
@@ -54,10 +53,9 @@ createBlocky = function(x, y) {
 
 	self.update = function() {
 		// Jump initiate
-		if (_.yPos == 0 && keys.a && !_.holdingJump && keys.aJustPressed) {
+		if (_.yPos == 0 && keys.a && !_.holdingJump) {
 			_.currentJumpFrames = 1;
 			_.holdingJump = true;
-			keys.aJustPressed = false;
 		}
 
 		// Increment jump frames
@@ -206,10 +204,6 @@ $(document).ready(function() {
 function keyDown(e) {
     var keyType = getKeyType(e.keyCode);
     keys[keyType] = true;
-    
-    if (keyType == 'a') {
-        keys.aJustPressed = true;
-    }
 }
 
 function keyUp(e) {
