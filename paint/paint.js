@@ -195,37 +195,44 @@ function mouseDown(e) {
  * newR, newG, newB - ints containing the components of the new color to be filled in
  */
 function floodFill(pix, index, oldR, oldG, oldB, newR, newG, newB) {
-	var MAX_COLOR_DIFFERENCE = 63;
-	var queue = [];
-	if (pix[index] != oldR && pix[i + 1] != oldG && pix[i + 2] != oldB)
+    var isMatchingColor = function(r1, g1, b1, r2, g2, b2) {
+        var MAX_COLOR_DIFFERENCE = 63;
+        return (Math.abs(r1 - r2) < MAX_COLOR_DIFFERENCE &&
+               (Math.abs(g1 - g2) < MAX_COLOR_DIFFERENCE &&
+       	       (Math.abs(b1 - b2) < MAX_COLOR_DIFFERENCE);
+    };
+
+	if (!isMatchingColor(pix[index], pix[i + 1], pix[i + 2], oldR, oldG, oldB)) {
 		return;
-	queue.push(index);
-	
+	}
+    var queue = [index];
+
 	while (queue.length > 0) {
 		var i = queue.shift();
-		if (Math.abs(pix[i] - oldR) < MAX_COLOR_DIFFERENCE && Math.abs(pix[i + 1] - oldG) < MAX_COLOR_DIFFERENCE && Math.abs(pix[i + 2] - oldB) < MAX_COLOR_DIFFERENCE) {
+		if (isMatchingColor(pix[i], pix[i + 1], pix[i + 2], oldR, oldG, oldB)) {
 			var w = i;
 			var e = i + 4;
-			while (w % (CANVAS_WIDTH * 4) != (CANVAS_WIDTH * 4 - 4) && Math.abs(pix[w] - oldR) < MAX_COLOR_DIFFERENCE && Math.abs(pix[w + 1] - oldG) < MAX_COLOR_DIFFERENCE && Math.abs(pix[w + 2] - oldB) < MAX_COLOR_DIFFERENCE) {
+			while (w % (CANVAS_WIDTH * 4) != (CANVAS_WIDTH * 4 - 4) &&
+			       isMatchingColor(pix[w], pix[w + 1], pix[w + 2], oldR, oldG, oldB)) {
 				w -= 4;
 			}
-			while (e % (CANVAS_WIDTH * 4) != 0 && Math.abs(pix[e] - oldR) < MAX_COLOR_DIFFERENCE && Math.abs(pix[e + 1] - oldG) < MAX_COLOR_DIFFERENCE && Math.abs(pix[e + 2] - oldB) < MAX_COLOR_DIFFERENCE) {
+			while (e % (CANVAS_WIDTH * 4) != 0 &&
+			       isMatchingColor(pix[e], pix[e + 1], pix[e + 2], oldR, oldG, oldB)) {
 				e += 4;
 			}
 			for (var j = w + 4; j < e; j += 4) {
 				pix[j] = newR;
 				pix[j + 1] = newG;
 				pix[j + 2] = newB;
+
 				if (j >= CANVAS_WIDTH * 4 &&
-					pix[j - CANVAS_WIDTH * 4] == oldR &&
-					pix[j - CANVAS_WIDTH * 4 + 1] == oldG &&
-					pix[j - CANVAS_WIDTH * 4 + 2] == oldB)
+				        isMatchingColor(pix[j - CANVAS_WIDTH * 4], pix[j - CANVAS_WIDTH * 4 + 1], pix[j - CANVAS_WIDTH * 4 + 2], oldR, oldG, oldB)) {
 					queue.push(j - CANVAS_WIDTH * 4);
+				}
 				if (j < CANVAS_HEIGHT * CANVAS_WIDTH * 4 - CANVAS_WIDTH * 4 &&
-					pix[j + CANVAS_WIDTH * 4] == oldR &&
-					pix[j + CANVAS_WIDTH * 4 + 1] == oldG &&
-					pix[j + CANVAS_WIDTH * 4 + 2] == oldB)
+				        isMatchingColor(pix[j + CANVAS_WIDTH * 4], pix[j + CANVAS_WIDTH * 4 + 1], pix[j + CANVAS_WIDTH * 4 + 2], oldR, oldG, oldB)) {
 					queue.push(j + CANVAS_WIDTH * 4);
+				}
 			}
 		}
 	}
