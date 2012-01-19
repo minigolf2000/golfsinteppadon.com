@@ -99,7 +99,8 @@ include("global/header.php");
 	</div>
 	
 	<p id="footer">
-	<a href="http://www.linkedin.com/pub/golf-sinteppadon/18/354/614" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View Golf Sinteppadon's LinkedIn profile" style="vertical-align:middle"></a>
+	<a href="http://www.linkedin.com/pub/golf-sinteppadon/18/354/614" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View Golf Sinteppadon's LinkedIn profile" style="vertical-align:middle"></span></a>
+	<a href="https://github.com/MiniGolf2000/" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="images/github.png" width="15" height="15" alt="View Golf Sinteppadon's Github profile" style="vertical-align:middle"></span></a>
 		<span class="space">|</span>
 		If you have a potential project or just want to say hello,
 		e-mail me at <a href="mailto:golf.sinteppadon@gmail.com">golf.sinteppadon@gmail.com</a>
