@@ -3,16 +3,16 @@
 # Written by Golf Sinteppadon
 $title = "AI Soccer";
 $includes = array('<link rel="stylesheet" type="text/css" href="soccer.css" />',
-				  '<script src="/global/prototype.js" type="text/javascript"></script>',
-				  '<script src="js/main.js" type="text/javascript"></script>',
-				  '<script src="js/ball.js" type="text/javascript"></script>',
-				  '<script src="js/soccerPitch.js" type="text/javascript"></script>',
-				  '<script src="js/soccerTeam.js" type="text/javascript"></script>',
-				  '<script src="js/teamStates.js" type="text/javascript"></script>',
-				  '<script src="js/goal.js" type="text/javascript"></script>',
-				  '<script src="js/player.js" type="text/javascript"></script>',
-				  '<script src="js/fieldPlayerState.js" type="text/javascript"></script>',
-				  '<script src="js/goalKeeperState.js" type="text/javascript"></script>');
+				  '<script src="/global/prototype.js"></script>',
+				  '<script src="js/main.js"></script>',
+				  '<script src="js/ball.js"></script>',
+				  '<script src="js/soccerPitch.js"></script>',
+				  '<script src="js/soccerTeam.js"></script>',
+				  '<script src="js/teamStates.js"></script>',
+				  '<script src="js/goal.js"></script>',
+				  '<script src="js/player.js"></script>',
+				  '<script src="js/fieldPlayerState.js"></script>',
+				  '<script src="js/goalKeeperState.js"></script>');
 include("../global/header.php");
 ?>
 		<div class="cloud">

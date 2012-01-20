@@ -3,8 +3,8 @@
 # Written by Golf Sinteppadon
 $title = "Chuck Norris Fact Generator";
 $includes = array('<link rel="stylesheet" type="text/css" href="chuck.css" />',
-				  '<script src="/global/prototype.js" type="text/javascript"></script>',
-				  '<script src="chuck.js" type="text/javascript"></script>');
+				  '<script src="/global/prototype.js"></script>',
+				  '<script src="chuck.js"></script>');
 
 $facts = explode('","', file_get_contents("chuck.csv"));
 include("../global/header.php");

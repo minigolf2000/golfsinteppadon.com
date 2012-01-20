@@ -1,13 +1,13 @@
 <?php
 $title = "Tic Tac Toe";
 $includes = array('<link rel="stylesheet" type="text/css" href="tictactoe.css" />',
-				  '<script src="../global/prototype.js" type="text/javascript"></script>',
-				  '<script src="../global/effects.js" type="text/javascript"></script>',
-				  '<script src="tictactoe.js" type="text/javascript"></script>',
-				  '<script src="board.js" type="text/javascript"></script>',
-				  '<script src="cell.js" type="text/javascript"></script>',
-				  '<script src="computerAI.js" type="text/javascript"></script>',
-				  '<script src="heuristic.js" type="text/javascript"></script>');
+				  '<script src="../global/prototype.js"></script>',
+				  '<script src="../global/effects.js"></script>',
+				  '<script src="tictactoe.js"></script>',
+				  '<script src="board.js"></script>',
+				  '<script src="cell.js"></script>',
+				  '<script src="computerAI.js"></script>',
+				  '<script src="heuristic.js"></script>');
 include("../global/header.php");
 ?>
 		<div class="cloud">
