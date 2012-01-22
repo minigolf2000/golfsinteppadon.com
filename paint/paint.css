@@ -7,6 +7,7 @@ body {
 	width: 750px;
 	margin: 0px auto;
 	color: black;
+    line-height: 1em; /* prevent line height from spacing out icons */
 }
 
 #toolbar {
@@ -75,19 +76,10 @@ table, #currentColor {
 	margin-left: 200px;
 }
 
-#github a {
-    color: white;
-    font-weight: normal;
-}
-
-#github a:hover {
-    text-decoration: underline;
-}
-
-#github * {
+ul li * {
     vertical-align: middle;
 }
 
-#paintable {
-    color: #34ED38;
+.green {
+    color: #34ed38;
 }

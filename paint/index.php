@@ -3,7 +3,7 @@
 $title = "GS Paint";
 $includes = array('<link rel="stylesheet" type="text/css" href="paint.css" />',
 				  '<script src="http://code.jquery.com/jquery-latest.min.js"></script>',
-                  '<script src="jquery-paintable.js"></script>',
+                  '<script src="http://golfsinteppadon.com/jquery-paintable.js"></script>',
 				  '<script src="paint.js"></script>');
 include("../global/header.php");
 ?>
@@ -22,7 +22,10 @@ include("../global/header.php");
 					</div>
 				</canvas>
 			</div>
-            <p id="github" style="font-size: 1.3em;"><a href="https://github.com/MiniGolf2000/paintable"><img src="github.png" alt="Github" /><em>For the nerds:</em><span> Check out my </span><span id="paintable">.paintable()</span><span> jQuery plugin</span></a></p>
+            <p>Also see:</p>
+            <ul>
+                <li><a class="green" href="/painttheweb"><img src="/painttheweb/icon.png" alt="Paint the Web" />Paint the Web</a></li>
+                <li><a href="https://github.com/MiniGolf2000/jquery-paintable"><img src="github.png" alt="Github" />.paintable()</a><span> jQuery plugin on Github</span></li>
 		</div>
 <?php
 include("../global/footer.html");

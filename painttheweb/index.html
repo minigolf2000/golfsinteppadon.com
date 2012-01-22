@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Paint the Web</title>
+        <link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                font-family: "Gudea", "Arial", sans-serif;
+                width: 550px;
+                margin: 50px auto;
+                line-height: 2em;
+            }
+            
+            a {
+                text-decoration: none;
+            }
+            
+            a.painttheweb {
+                display: inline-block;
+                font-size: 14px;
+                color: #123d54;
+                padding: 5px 10px;
+                margin: 0px 10px;
+                background: -moz-linear-gradient(
+                    top,
+                    #a5ceed 0%,
+                    #326e8f);
+                background: -webkit-gradient(
+                    linear, left top, left bottom, 
+                    from(#a5ceed),
+                    to(#326e8f));
+                border-radius: 6px;
+                -moz-border-radius: 6px;
+                -webkit-border-radius: 6px;
+                border: 1px solid #003366;
+                -moz-box-shadow:
+                    0px 1px 3px rgba(000,000,000,0.5),
+                    inset 0px 0px 1px rgba(255,255,255,1);
+                -webkit-box-shadow:
+                    0px 1px 3px rgba(000,000,000,0.5),
+                    inset 0px 0px 1px rgba(255,255,255,1);
+                text-shadow:
+                    0px -1px 0px rgba(000,000,000,0.7),
+                    0px 1px 0px rgba(255,255,255,0.3);
+            }
+
+            h1, h2 {
+                text-align: center;
+            }
+
+            h2 {
+                font-size: .8em;
+                margin-bottom: 50px;
+            }
+
+            .footer a {
+                font-size: .8em;
+                color: #555555;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Paint the Web</h1>
+
+        <p>
+            This bookmarklet allows makes any web page paintable!<br />
+        </p>
+        <p>To paint:</p>
+        <ol>
+            <li>Drag
+                <a class="painttheweb" href="javascript:(function(){var%20script=document.createElement('script');script.src='http://code.jquery.com/jquery-latest.min.js';document.body.appendChild(script);var%20script2=document.createElement('script');script2.src='http://golfsinteppadon.com/jquery-paintable.js';document.body.appendChild(script2);var%20script3=document.createElement('script');script3.src='http://golfsinteppadon.com/painttheweb/script.js';document.body.appendChild(script3)})()">
+                Paint the Web</a>
+                to your bookmarks toolbar
+            </li>
+            <li>Go to any webpage</li>
+            <li>Click on the bookmark.</li>
+        </ol>
+        <br />
+        <p class="footer"><a href="http://golfsinteppadon.com/">Golf Sinteppadon</a></p>
+    </body>
+</html>
