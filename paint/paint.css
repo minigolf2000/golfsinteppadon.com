@@ -1,5 +1,5 @@
 body {
-	-webkit-user-select: none;
+	-webkit-user-select: none; /* prevent webkit from highlighting things as the user drags */
 }
 
 #frame {
@@ -7,11 +7,6 @@ body {
 	width: 750px;
 	margin: 0px auto;
 	color: black;
-	border: 1px solid #666666;
-	-moz-border-radius-topleft: 20px;
-	-moz-border-radius-bottomleft: 20px;
-	-webkit-border-top-left-radius: 20px;
-	-webkit-border-bottom-left-radius: 20px;
 }
 
 #toolbar {
@@ -71,10 +66,8 @@ table, #currentColor {
     background-color: black;
 }
 
-canvas {
-	float: left;
-	height: 100%;
-	width: 80%;
+#canvas {
+    background-color: white;
 }
 
 #nocanvas {

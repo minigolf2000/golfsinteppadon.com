@@ -3,7 +3,7 @@
 $title = "GS Paint";
 $includes = array('<link rel="stylesheet" type="text/css" href="paint.css" />',
 				  '<script src="http://code.jquery.com/jquery-latest.min.js"></script>',
-                  '<script src="paintable.js"></script>',
+                  '<script src="jquery-paintable.js"></script>',
 				  '<script src="paint.js"></script>');
 include("../global/header.php");
 ?>

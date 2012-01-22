@@ -1,7 +1,11 @@
 $(document).on('ready', function() {
 	setupTools();
 	setupColors();
-    $("#canvas").paintable();
+    $("#canvas").paintable({
+        width: 1.5,
+        cursor: 'url("pencil.png") 0 16, crosshair',
+        color: $('#currentColor').css('background-color')
+    });
 });
 
 function setupTools() {
@@ -18,16 +22,27 @@ function setupTools() {
     var $table = $('<table></table>');
     $.each([["pencil", "eraser"]], function(index) {
         $table.append('<tr>' +
-        '<td data-tool=' + this[0] + '><img src="' + this[0] + '.png" alt="" title="' + this[0] + '"/></td>' +
-        '<td data-tool=' + this[1] + '><img src="' + this[1] + '.png" alt="" title="' + this[1] + '"/></td>' +
+        '<td id="' + this[0] + '"><img src="' + this[0] + '.png" alt="" title="' + this[0] + '"/></td>' +
+        '<td id="' + this[1] + '"><img src="' + this[1] + '.png" alt="" title="' + this[1] + '"/></td>' +
         '</tr>');
 	});
-    $('td', $table).on('click', function() {
-        $('#canvas').paintable('setTool', $(this).data('tool'));
-    });
     $tools.append($table);
-    (new Image()).src = "lilypad.png";
-    (new Image()).src = "eraserCursor.png";
+    $('#pencil').on('click', function() {
+        $('#canvas').paintable('options', {
+            width: 1.5,
+            cursor: 'url("pencil.png") 0 16, crosshair',
+            color: $('#currentColor').css('background-color')
+        })
+        .data('erasing', false);
+    });
+    $('#eraser').on('click', function() {
+        $('#canvas').paintable('options', {
+            width: 16,
+            cursor: 'url("eraserCursor.png") 8 8, crosshair',
+            color: 'white'
+        })
+        .data('erasing', true);
+    });
 
     // Add undo button
 	$tools.append('<div id="undo"><img src="undo.png" alt="" title="undo" /></div>');
@@ -63,7 +78,9 @@ function setupColors() {
 
         $("#currentColor").css('background-color', newColor);
         $(this).css('border', "1px solid " + newColor);
-        $('#canvas').paintable('setColor', newColor);
+        if (!$('#canvas').data('erasing')) {
+            $('#canvas').paintable('option', 'color', newColor);
+        }
     });
 
 	$colors.append($table).append('<div id="currentColor"></div>');
