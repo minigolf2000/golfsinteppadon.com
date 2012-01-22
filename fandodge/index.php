@@ -1,8 +1,8 @@
 <?php
 $title = "Korean Fan Dodge";
 $includes = array('<link rel="stylesheet" type="text/css" href="fandodge.css" />',
-				  '<script src="/global/prototype.js" type="text/javascript"></script>',
-				  '<script src="fandodge.js" type="text/javascript"></script>');
+				  '<script src="/global/prototype.js"></script>',
+				  '<script src="fandodge.js"></script>');
 
 include("../global/header.php");
 ?>
