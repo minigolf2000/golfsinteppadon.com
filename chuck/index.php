@@ -3,7 +3,7 @@
 # Written by Golf Sinteppadon
 $title = "Chuck Norris Fact Generator";
 $includes = array('<link rel="stylesheet" type="text/css" href="chuck.css" />',
-				  '<script src="/global/prototype.js"></script>',
+				  '<script src="http://code.jquery.com/jquery-latest.min.js"></script>',
 				  '<script src="chuck.js"></script>');
 
 $facts = explode('","', file_get_contents("chuck.csv"));
@@ -22,7 +22,7 @@ foreach ($facts as $fact) {
 ?>
 			</fieldset>
 			<p><span id="nextfact">See next fact</span></p>
-			
+
 			<label>
 				<strong>Viewing awesome facts about</strong>
 				<input id="nameinput" autocomplete="off" type="text" name="name" value="Chuck Norris" />

@@ -1,32 +1,27 @@
-var PAGE_TITLE = " Fact Generator | Golf Sinteppadon";
+$(document).on('ready', function() {
+    $('.fact').each(function() {
+        $(this).html($(this).html().replace("Chuck Norris", "<span class='chucknorris'>Chuck Norris</span>", "gi"));
+    });
 
-Event.observe(window, "load", function() {
-	// Add spans around chuck norrises
-	var facts = $$(".fact");
-	for (var i = 0; i < facts.length; i++) {
-		facts[i].innerHTML = facts[i].innerHTML.replace("Chuck Norris", "<span class='chucknorris'>Chuck Norris</span>", "gi");
-	}
-
-	showRandomFact();
-	Event.observe("nextfact", "click", showRandomFact);
-	Event.observe("nameinput", "keyup", refreshName);
+    showRandomFact();
+    $('#nextfact').on('click', showRandomFact);
+    $('#nameinput').on('keyup', refreshName);
 });
 
 function showRandomFact() {
-	while ($$(".fact.visible").length > 0) {
-		$$(".fact.visible")[0].removeClassName("visible");
-	}
-	var facts = $$(".fact");
-	var randomFact = facts[Math.floor(Math.random() * facts.length)];
-	randomFact.addClassName("visible");
+	$('.fact.visible').removeClass('visible');
+    // Add class .visible to random element in $('.fact')
+    var $facts = $('.fact');
+    $facts.eq(Math.floor(Math.random() * $facts.length)).addClass('visible');
+
 	refreshName();
 }
 
 function refreshName() {
-	var newName = $("nameinput").value ? $("nameinput").value : "_";
-	var staticChuckNorrisStrings = $$(".chucknorris.static, .visible .chucknorris");
-	for (var i = 0; i < staticChuckNorrisStrings.length; i++) {
-		staticChuckNorrisStrings[i].innerText = staticChuckNorrisStrings[i].textContent = newName;
-	}
+	var newName = $("#nameinput").val() ? $("#nameinput").val() : "_";
+    $('.chucknorris.static, .visible .chucknorris').each(function() {
+        $(this).text(newName);
+    });
+    var PAGE_TITLE = " Fact Generator | Golf Sinteppadon";
 	document.title = newName + PAGE_TITLE;
 }
