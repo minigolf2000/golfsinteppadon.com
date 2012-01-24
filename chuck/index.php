@@ -15,9 +15,7 @@ include("../global/header.php");
 				<legend><strong><span class="chucknorris static">Chuck Norris</span> Fact</strong></legend>
 <?php
 foreach ($facts as $fact) {
-?>
-	<span class="fact"><?php echo $fact ?></span>
-<?php
+    echo '<span class="fact">' . $fact . '</span>';
 }
 ?>
 			</fieldset>

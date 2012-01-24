@@ -19,9 +19,8 @@ function showRandomFact() {
 
 function refreshName() {
 	var newName = $("#nameinput").val() ? $("#nameinput").val() : "_";
-    $('.chucknorris.static, .visible .chucknorris').each(function() {
-        $(this).text(newName);
-    });
+    $('.chucknorris.static, .visible .chucknorris').text(newName);
+
     var PAGE_TITLE = " Fact Generator | Golf Sinteppadon";
 	document.title = newName + PAGE_TITLE;
 }
