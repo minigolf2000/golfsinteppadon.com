@@ -22,7 +22,7 @@ foreach ($facts as $fact) {
 			<p><span id="nextfact">See next fact</span></p>
 
 			<label>
-				<strong>Viewing awesome facts about</strong>
+				<strong>Now viewing awesome facts about</strong>
 				<input id="nameinput" autocomplete="off" type="text" name="name" value="Chuck Norris" />
 			</label>
 		</div>
