@@ -10,7 +10,6 @@ include("../global/header.php");
 		<div class="cloud">
 			<div id="controls"><img src="images/controls.png" alt=""/></div>
 			<div id="frame"></div>
-			<div id="debug"></div>
 		</div>
 <?php
 include("../global/footer.html");

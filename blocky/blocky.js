@@ -26,7 +26,7 @@ var blocky = (function (x, y) {
             _.update();
             _.render();
         }, 1000 / constants.FPS);
-    },
+    };
 
     _.update = function () {
         // Jump initiate
@@ -86,7 +86,7 @@ var blocky = (function (x, y) {
             _.xPos = constants.WIDTH;
             _.xVel = 0;
         }
-    },
+    };
 
     /**
      * Set blocky's position and sprite based on current state
