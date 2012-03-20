@@ -29,7 +29,7 @@ $(function () {
     _.initialize = function () {
         $("#frame").height(constants.HEIGHT);
         $(document).on('keyup keydown', _.setKey);
-        blocky(constants.WIDTH / 2, 0);
+        blocky.initialize();
     };
 
     /**

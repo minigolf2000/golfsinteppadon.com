@@ -1,8 +1,10 @@
-var blocky = (function (x, y) {
+var blocky = (function () {
+
+    var self = {};
 
     var _ = {
-        xPos: x,
-        yPos: y,
+        xPos: constants.WIDTH / 2,
+        yPos: 0,
         xVel: 0,
         yVel: 0,
 
@@ -18,7 +20,7 @@ var blocky = (function (x, y) {
         spriteY: 0
     };
 
-    _.initialize = function () {
+    self.initialize = function () {
         $("#frame").append("<div id='blocky'></div>");
         _.$container = $("#blocky");
 
@@ -142,5 +144,6 @@ var blocky = (function (x, y) {
         _.$container.css('backgroundPosition', -(_.spriteX * 128) + "px " + -(_.spriteY * 128) + "px");
     };
 
-    _.initialize();
-});
+    return self;
+
+})();
