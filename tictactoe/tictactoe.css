@@ -22,7 +22,7 @@
 	position: relative;
 	height: 180px;
 	width: 180px;
-	background-image: url(tictactoe.png);
+	background-image: url(images/tictactoe.png);
 	cursor: pointer;
 }
 
@@ -47,19 +47,19 @@ h4 {
 }
 
 #gameboard .x, #demoCell.x {
-	background: url(x.png) no-repeat;
+	background: url(images/x.png) no-repeat;
 }
 
 #gameboard .o, #demoCell.o {
-	background: url(o.png) no-repeat;
+	background: url(images/o.png) no-repeat;
 }
 
 #gameboard .highlightred {
-	background-image: url(xTransparent.png);
+	background-image: url(images/xTransparent.png);
 }
 
 #gameboard .highlightblue {
-	background-image: url(oTransparent.png);
+	background-image: url(images/oTransparent.png);
 }
 
 #message {

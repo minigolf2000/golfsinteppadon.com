@@ -3,11 +3,11 @@ $title = "Tic Tac Toe";
 $includes = array('<link rel="stylesheet" type="text/css" href="tictactoe.css" />',
 				  '<script src="../global/prototype.js"></script>',
 				  '<script src="../global/effects.js"></script>',
-				  '<script src="tictactoe.js"></script>',
-				  '<script src="board.js"></script>',
-				  '<script src="cell.js"></script>',
-				  '<script src="computerAI.js"></script>',
-				  '<script src="heuristic.js"></script>');
+				  '<script src="js/tictactoe.js"></script>',
+				  '<script src="js/board.js"></script>',
+				  '<script src="js/cell.js"></script>',
+				  '<script src="js/computerAI.js"></script>',
+				  '<script src="js/heuristic.js"></script>');
 include("../global/header.php");
 ?>
 		<div class="cloud">

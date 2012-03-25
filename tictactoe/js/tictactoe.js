@@ -9,9 +9,8 @@ Event.observe(window, 'load', function() {
 	currentBoard.createHTML();
 	// Preload images
 	var imageObj = new Image();
-	imageObj.src = "o.png";
-	imageObj.src = "x.png";
-	imageObj.src = "tictactoeresethover.png";
+	imageObj.src = "images/o.png";
+	imageObj.src = "images/x.png";
 	
 	$("easy").onclick = $("hard").onclick = $("reset").onclick = resetBoard;
 	$("1player").onclick = oneplayclick;
