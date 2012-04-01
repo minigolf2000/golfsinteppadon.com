@@ -1,90 +1,65 @@
-var currentBoard; // Tic tac toe board
-var oneplay;
+var tictactoe = (function (self) {
 
-var gameRunning = true;
-var heuristic;
+    self.oTurn = false;
+    self.gameRunning = true;
 
-Event.observe(window, 'load', function() {
-	currentBoard = new Board();
-	currentBoard.createHTML();
-	// Preload images
-	var imageObj = new Image();
-	imageObj.src = "images/o.png";
-	imageObj.src = "images/x.png";
-	
-	$("easy").onclick = $("hard").onclick = $("reset").onclick = resetBoard;
-	$("1player").onclick = oneplayclick;
-	$("2player").onclick = twoplayclick;
-	
-	heuristic = new Heuristic();
-	oneplayclick();
-});
+    var _ = {};
+
+    _.playerIsX = true;
+    _.players = {'x': null, 'o': null};
+
+    _.initialize = function () {
+        // Preload images
+        var imageObj = new Image();
+        imageObj.src = "images/o.png";
+        imageObj.src = "images/x.png";
+
+        $('#reset').on('click', tictactoe.resetBoard);
+        
+        tictactoe.resetBoard();
+    }
+
+    self.resetBoard = function () {
+        tictactoe.board.reset();
+        tictactoe.oTurn = false;
+        tictactoe.gameRunning = true;
+        $("#message").text('');
 
 
-function click(clickedCellIndex) {
-	var victorySquares = currentBoard.checkEnd(clickedCellIndex);
-	if (victorySquares) {
-		// At this point, the game is over
-		gameRunning = false;
-		if (victorySquares == "tie") { // Tie game
-			$("message").innerText = $("message").textContent = "Cat's Game!";
-			$("message").className = "";
-			return;
-		}
-		else if (!currentBoard.oTurn) { // X won
-			$("message").innerText = $("message").textContent = "X Wins!";
-			$("message").className = "red";
-		}
-		else { // O won
-			$("message").innerText = $("message").textContent = "O Wins!";
-			$("message").className = "blue";
-		}
-		Effect.Pulsate(currentBoard.cells[victorySquares.charAt(0)].container, {pulses: 3, duration: 1.5});
-		Effect.Pulsate(currentBoard.cells[victorySquares.charAt(1)].container, {pulses: 3, duration: 1.5});
-		Effect.Pulsate(currentBoard.cells[victorySquares.charAt(2)].container, {pulses: 3, duration: 1.5});
-		return;
-	}
-	currentBoard.oTurn = !currentBoard.oTurn;
-	
-	// Update turn indicator
-	updateTurnIndicator();
-	
-	// // AI move
-	if (currentBoard.oTurn && oneplay && gameRunning) {
-		// Get the cell to move to, and click that cell
-		heuristic.findNextMove(currentBoard, clickedCellIndex);
-		currentBoard.cells[currentBoard.optimalNextMove].container.onclick();
-	}
-}
+        _.players = {'x': tictactoe.createPlayer(_.playerIsX /* should be the player */, true /* name is x */),
+                     'o': tictactoe.createPlayer(!_.playerIsX /* should be the AI */, false /* name is o */)};
+        _.playerIsX = !_.playerIsX;
+        _.players.x.findNextMove();
+    };
 
-function oneplayclick() {
-	$("gametype").innerText = $("gametype").textContent = "1 Player";
-	$("2player").setAttribute("class", "notDisabled");
-	$("1player").setAttribute("class", "disabled");
-	$("difficulty").style.display = "block";
-	$("turnIndicator").style.display = "none";
-	resetBoard();
-	oneplay = true;
-}
+    self.move = function (cell) {
+        $('#' + cell).addClass(self.oTurn ? 'o' : 'x');
+        tictactoe.board.getBoard()[cell] = (self.oTurn ? 'o' : 'x');
 
-function twoplayclick() {
-	$("gametype").innerText = $("gametype").textContent = "2 Player";
-	$("2player").setAttribute("class", "disabled");
-	$("1player").setAttribute("class", "notDisabled");
-	$("difficulty").style.display = "none";
-	$("turnIndicator").style.display = "block";
-	resetBoard();
-	oneplay = false;
-}
+        var victorySquares = tictactoe.board.checkEnd(cell);
+        if (victorySquares) {
+            tictactoe.gameRunning = false;
+            
+            $('#board').off();
+            if (victorySquares == "tie") { // Tie game
+                $("#message").text("Cat's Game!");
+            } else {
+                $('#message').text(victorySquares.player.toUpperCase() + ' Wins!');
+                
+                // Animate winning cells
+                $('#' + victorySquares.winningCells.join(', #')).fadeTo('fast', 0, function () { $(this).fadeTo('fast', 1); })
+            }
+            return;
+        }
 
-function resetBoard() {
-	currentBoard.reset();
-	for (var i = 0; i < currentBoard.cells.length; i++) {
-		currentBoard.cells[i].reset();
-	}
-}
+        tictactoe.oTurn = !tictactoe.oTurn;
+        _.players[tictactoe.oTurn ? 'o' : 'x'].findNextMove();
+    };
 
-// Updates the turn indicator for two player games
-function updateTurnIndicator() {
-	$("demoCell").setAttribute("class", currentBoard.oTurn ? "o" : "x");
-}
+    $(function () {
+        _.initialize();
+    });
+
+    return self;
+
+})(tictactoe || {});

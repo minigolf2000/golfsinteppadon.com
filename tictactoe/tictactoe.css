@@ -9,15 +9,13 @@
 	text-align: center;
 }
 
-#sidebar {
+#difficulty {
 	float: left;
 	width: 200px;
 	margin-left: 20px;
-	padding-top: 130px;
-	line-height: 1.7em;
 }
 
-#gameboard {
+#board {
 	margin: 20px auto;
 	position: relative;
 	height: 180px;
@@ -26,7 +24,7 @@
 	cursor: pointer;
 }
 
-#gameboard div {
+#board div {
 	position: absolute;
 	margin: 1px;
 	display: inline;
@@ -34,32 +32,20 @@
 	width: 59px;
 }
 
-#demoCell {
-	height: 59px;
-	background-repeat: none;
-	padding-left: 60px;
-	padding-top: 15px;
-	margin-top: 40px;
-}
-
-h4 {
-	padding-left: 5px;
-}
-
-#gameboard .x, #demoCell.x {
-	background: url(images/x.png) no-repeat;
-}
-
-#gameboard .o, #demoCell.o {
-	background: url(images/o.png) no-repeat;
-}
-
-#gameboard .highlightred {
+#board .highlight-x {
 	background-image: url(images/xTransparent.png);
 }
 
-#gameboard .highlightblue {
+#board .highlight-o {
 	background-image: url(images/oTransparent.png);
+}
+
+#board .x {
+	background: url(images/x.png) no-repeat;
+}
+
+#board .o {
+	background: url(images/o.png) no-repeat;
 }
 
 #message {
@@ -68,28 +54,15 @@ h4 {
 	height: 30px;
 }
 
-.red {
+.x {
 	color: red;
 }
 
-.blue {
+.o {
 	color: blue;
 }
 
-#1player, #2player {
-	float: left;
-}
-
-button.disabled {
-	background-color: #CCCCCC;
-	color: #777777;
-	border: 2px solid #777777;
-	padding: 2px 10px;
-	font-weight: bold;
-	vertical-align: middle;
-}
-
-#reset, button.notDisabled {
+#reset {
 	border: 2px solid #005278;
 	background: #005278;
 	background: -webkit-gradient(linear, left top, left bottom, from(#3989a4), to(#005278));
@@ -99,18 +72,14 @@ button.disabled {
 	color: white;
 	vertical-align: middle;
 	font-weight: bold;
-}
-
-#reset:hover, button.notDisabled:hover {
-	background: #28597a;
-	color: #ffffff;
 	cursor: pointer;
 }
 
-#reset:active, button.notDisabled:active {
-	background: #1b435e;
+#reset:hover {
+	background: #28597a;
+	color: #ffffff;
 }
 
-#debug {
-	clear: both;
+#reset:active {
+	background: #1b435e;
 }

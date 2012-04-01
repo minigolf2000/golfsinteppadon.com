@@ -1,86 +1,63 @@
-Board = Class.create({
-	
-	initialize: function() {
-		this.cells = [];
-		this.oTurn = false;
-		for (var i = 0; i < 9; i++) {
-			this.cells[i] = new Cell(i);
-		}
-		
-		this.heuristic = null;
-		this.optimalNextMove = null;
-	/*
-		The map of cells to check after a cell has been played
-		012
-		345
-		678
-	*/
-	this.WINNING_CELLS = [["12", "36", "48"],
-						 ["02", "47"],
-						 ["01", "58", "46"],
-						 ["45", "06"],
-						 ["35", "17", "08", "26"],
-						 ["34", "28"],
-						 ["78", "03", "24"],
-						 ["68", "14"],
-						 ["67", "25", "04"]];
-	},
-	
-	createHTML: function() {
-		this.container = $("gameboard");
-		for (var i = 0; i < 9; i++) {
-			this.container.appendChild(this.cells[i].container);
-		}
-	},
-	
-	clone: function() {
-		var clone = new Board();
-		
-		clone.oTurn = this.oTurn;
-		for (var i = 0; i < this.cells.length; i++) {
-			clone.cells[i] = this.cells[i].clone();
-		}
-		return clone;
-	},
-	
-		
-	/**
-	* Check if the game is over. If someone won, return a string containing 3 integers representing the winning squares,
-	* if the game is a tie, return "tie", otherwise return false.
-	*/
-	checkEnd: function(clickedIndex) {
-		var player = (this.oTurn) ? "o" : "x";
-		
-		//$("debug").textContent += this.toString();
-		var cellCombosToCheck = this.WINNING_CELLS[clickedIndex];
-		for (var i = 0; i < cellCombosToCheck.length; i++) {
-			if (this.cells[cellCombosToCheck[i][0]].container.owner == player &&
-				this.cells[cellCombosToCheck[i][1]].container.owner == player) {
-				return "" + clickedIndex + cellCombosToCheck[i][0] + cellCombosToCheck[i][1];
-			}
-		}
-		// Check for a tie
-		for (var i = 0; this.cells[i].container.hasClassName("x") || this.cells[i].container.hasClassName("o"); i++) {
-			if (i == 8) {
-				return "tie";
-			}
-		}
-		
-		return false;
-	},
+var tictactoe = (function (tictactoe) {
 
-	reset: function() {
-		this.oTurn = false;
-		updateTurnIndicator();
-		gameRunning = true;
-		$("message").innerText = $("message").textContent = "";
-	},
-	
-	toString: function() {
-		var toReturn = [];
-		for (var i = 0; i < this.cells.length; i++) {
-			toReturn[i] = this.cells[i].toString();
-		}
-		return "[" + toReturn.join(",") + "]";
-	}
-});
+    var self = {};
+
+    var _ = {};
+
+    /** 1-D array of the current board ([x, o, , , x, o, , , ]) */
+    _.board = [];
+
+    _.initialize = function () {
+        for (var index = 0; index < 9; index++) {
+            var $cell = $('<div></div>')
+            .attr('id', index)
+            .css({top: Math.floor(index / 3) * 60 + 'px', left: index % 3 * 60 + 'px'});
+            $('#board').append($cell);
+        }
+    };
+
+    self.reset = function () {
+        $('#board').off();
+        $('.x, .o').removeClass('x o');
+        _.board = ['', '', '', '', '', '', '', '', ''];
+    };
+
+    self.getBoard = function () {
+        return _.board;
+    };
+
+    /**
+    * Check if the game is over.
+    * If game is won, return {'winningCells': stringContainingWinningCellIds, 'player': 'x' or 'o'}
+    * If the game is a tie, return "tie", if game is not over return false.
+    */
+    self.checkEnd = function(clickedIndex) {
+        var cellsToHighlight = {};
+        $.each([[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]], function () {
+            if ((_.board[this[0]].length > 0) && (_.board[this[0]] == _.board[this[1]]) && (_.board[this[1]] == _.board[this[2]])) {
+                cellsToHighlight[this[0]] = cellsToHighlight[this[1]] = cellsToHighlight[this[2]] = 1;
+            }
+        });
+        if (!$.isEmptyObject(cellsToHighlight)) {
+            var winningCells = [];
+            $.each(cellsToHighlight, function (cell) {
+                winningCells.push(cell);
+            });
+            return {'winningCells': winningCells, 'player': _.board[winningCells[0]]};
+        };
+
+        if (_.board.join('').length == 9) {
+            return 'tie';
+        }
+
+        return false;
+    };
+
+    $(function () {
+        _.initialize();
+    });
+
+    tictactoe.board = self;
+    return tictactoe;
+
+})(tictactoe || {});
