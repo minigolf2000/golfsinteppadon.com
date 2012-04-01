@@ -15,6 +15,7 @@ var tictactoe = (function (self) {
         imageObj.src = "images/x.png";
 
         $('#reset').on('click', tictactoe.resetBoard);
+        $('input[type="radio"]').on('change', tictactoe.resetBoard);
         
         tictactoe.resetBoard();
     }

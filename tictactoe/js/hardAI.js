@@ -13,64 +13,70 @@ var tictactoe = (function (self) {
      * @param {array} board the array of the current board ([x, o, , , x, o, , , ])
      */
     _.findNextMove = function (board) {
-        _.maximin(board, -1, 1);
+        var answer = _.maximin(board, {lastMove: null, value: -1}, {lastMove: null, value: 1});
+        console.log(answer);
+        tictactoe.move(answer.move);
     };
 
-    _.maximin = function (board, lowerBound, upperBound) {
-        var end = board.checkEnd();
+    _.maximin = function (board, alpha, beta) {
+        var end = tictactoe.board.checkEnd();
         if (end == "tie") {
-            board.heuristic = 0;
+            return {value: 0};
+        } else if (end) {
+            return {value: ((board.oTurn && end.player == 'o') || (!board.oTurn && end.player == "x") ? 1 : -1)};
         }
-        else if (end) {
-            board.heuristic = board.oTurn == "x" ? -1 : 1;
-        }
+        var heuristic;
         for (var i = 0; i < 9; i++) {
-            if (board.cells[i].container.owner == null) {
-                var newBoard = board.clone(board);
+            if (board[i] == '') {
+                var newBoard = _.clone(board);
+                newBoard[i] = (board.oTurn) ? 'o' : 'x';
 
-                board.cells[i].container.onclick();
+                var heuristic = _.minimax(newBoard, alpha, beta);
 
-                _.minimax(newBoard, lowerBound, upperBound);
-
-                if (newBoard.heuristic > lowerBound) {
-                    lowerBound = newBoard.heuristic;
-                    board.optimalNextMove = i;
+                if (heuristic.value > alpha.value) {
+                    alpha = {move: i, value: heuristic.value};
                 }
-                if (lowerBound >= upperBound) {
-                    return lowerBound;
+                if (alpha.value >= beta.value) {
+                    return alpha;
                 }
             }
         }
-        board.heuristic = lowerBound;
-    },
+        return alpha
+    };
 
-    _.minimax = function (board, lowerBound, upperBound) {
-        var end = board.checkEnd();
+    _.minimax = function (board, alpha, beta) {
+        var end = tictactoe.board.checkEnd();
         if (end == "tie") {
-            board.heuristic = 0;
+            return {value: 0};
+        } else if (end) {
+            return {value: ((board.oTurn && end.player == 'o') || (!board.oTurn && end.player == "x") ? 1 : -1)};
         }
-        else if (end) {
-            board.heuristic = board.oTurn == "x" ? -1 : 1;
-        }
+        var heuristic;
         for (var i = 0; i < 9; i++) {
-            if (board.cells[i].container.owner == null) {
-                var newBoard = board.clone();
+            if (board[i] == '') {
+                var newBoard = _.clone(board);
+                newBoard[i] = (board.oTurn) ? 'o' : 'x';
 
-                board.cells[i].container.onclick();
+                var heuristic = _.maximin(newBoard, alpha, beta);
 
-                _.maximin(newBoard, lowerBound, upperBound);
-
-                if (newBoard.heuristic < upperBound) {
-                    upperBound = newBoard.heuristic;
-                    board.optimalNextMove = i;
+                if (heuristic.value < beta.value) {
+                    beta = {move: i, value: heuristic.value};
                 }
-                if (lowerBound >= upperBound) {
-                    return lowerBound;
+                if (beta.value <= alpha.value) {
+                    return beta;
                 }
             }
         }
-        board.heuristic = upperBound;
-    }
+        return beta;
+    };
+
+
+    /**
+     * Return the clone of an array
+     */
+    _.clone = function (array) {
+        return array.slice(0);
+    };
 
     $(function () {
         _.initialize();

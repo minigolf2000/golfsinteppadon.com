@@ -16,8 +16,10 @@ var tictactoe = (function (tictactoe) {
         };
 
         _.clickCell = function () {
-            $(this).removeClass('highlight-x highlight-o');
-            tictactoe.move($(this).get(0).id);
+            if (!$(this).hasClass('x') && !$(this).hasClass('o')) {
+                $(this).removeClass('highlight-x highlight-o');
+                tictactoe.move($(this).get(0).id);
+            }
         };
 
         if (_.isPlayer) {
