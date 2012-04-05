@@ -16,7 +16,7 @@ var tictactoe = (function (self) {
 
         $('#reset').on('click', tictactoe.resetBoard);
         $('input[type="radio"]').on('change', tictactoe.resetBoard);
-        
+
         tictactoe.resetBoard();
     }
 
@@ -40,13 +40,13 @@ var tictactoe = (function (self) {
         var victorySquares = tictactoe.board.checkEnd(cell);
         if (victorySquares) {
             tictactoe.gameRunning = false;
-            
+
             $('#board').off();
             if (victorySquares == "tie") { // Tie game
                 $("#message").text("Cat's Game!");
             } else {
                 $('#message').text(victorySquares.player.toUpperCase() + ' Wins!');
-                
+
                 // Animate winning cells
                 $('#' + victorySquares.winningCells.join(', #')).fadeTo('fast', 0, function () { $(this).fadeTo('fast', 1); })
             }

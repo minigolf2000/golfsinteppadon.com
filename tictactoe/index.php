@@ -24,9 +24,9 @@ include("../global/header.php");
 			</div>
             <div id="difficulty">
                 <h4>AI Type</h4>
-                <label><input id="easy" type="radio" checked="checked" name="difficulty" />Random</label>
+                <label><input id="easyAI" type="radio" checked="checked" name="difficulty" />Random</label>
                 <br />
-                <label><input id="hard" type="radio" name="difficulty" />Perfect</label>
+                <label><input id="hardAI" type="radio" name="difficulty" />Perfect</label>
             </div>
 		</div>
 <?php

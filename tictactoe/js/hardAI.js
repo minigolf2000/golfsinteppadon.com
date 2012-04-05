@@ -7,7 +7,7 @@ var tictactoe = (function (self) {
     };
 
     /**
-     * Return the next cell to move to.
+     * Move to the next cell
      * Hard AI uses minimax to crush you.
      *
      * @param {array} board the array of the current board ([x, o, , , x, o, , , ])
@@ -15,6 +15,10 @@ var tictactoe = (function (self) {
     _.findNextMove = function (board) {
         var answer = _.maximin(board, {lastMove: null, value: -1}, {lastMove: null, value: 1});
         console.log(answer);
+
+        if (answer.move < 0 || answer.move > 8) {
+            console.log("that was not right");
+        }
         tictactoe.move(answer.move);
     };
 

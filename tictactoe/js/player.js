@@ -39,8 +39,7 @@ var tictactoe = (function (tictactoe) {
              */
             findNextMove: function () {
                 if (!_.isPlayer) {
-                    ($('#easy').get(0).checked) ? tictactoe.easyAI.findNextMove(tictactoe.board.getBoard()) :
-                                                  tictactoe.hardAI.findNextMove(tictactoe.board.getBoard());
+                    tictactoe[$('#difficulty input:checked').attr('id')].findNextMove(tictactoe.board.getBoard());
                 }
             },
 
