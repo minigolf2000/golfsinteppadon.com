@@ -4,7 +4,7 @@ include("global/header.php");
 ?>
 	<div id="content">
 	
-		<p id="statement">Hey there! I am <span id="golfsinteppadon">Golf Sinteppadon</span>, a Software Developer who loves to make cool-looking websites!</p>
+		<p id="statement">Hey there! I am <span id="golfsinteppadon">Golf Sinteppadon</span>, an Software Engineer who loves to make awesome websites!</p>
 		
 		<div class="cloud">
 			<h2>Portfolio</h2>
@@ -16,6 +16,16 @@ include("global/header.php");
 					Featured in a <a href="http://www.wired.com/underwire/2011/03/seattle-band-map/">Wired.com article</a>, Seattle Band Map is an experimental map of local bands.
 					The user-submitted bands connect to each other if they have played together or have shared a band member.
 					The result is a monstrous spiderweb of the Seattle music scene.
+				</p>
+			</div>
+			
+			<div class="portfolio-item">
+				<a href="http://sso.stanford.edu/"><img src="images/stanford.png" alt="" /></a>
+				<h3><a href="http://sso.stanford.edu/">Stanford Symphony Orchestra</a></h3>
+				<p>
+					The Stanford Symphony Orchestra website is a useful place for fans and members of the symphony to get the latest
+					news on the group. Its redesign, which was timed out with the debut of Stanford's new Bing Concert Hall on campus,
+					gives it a fresh new look and makes it easily editable through Wordpress.
 				</p>
 			</div>
 			
@@ -98,14 +108,12 @@ include("global/header.php");
 		</div>
 	</div>
 	
-	<p id="footer">
-	<a href="http://www.linkedin.com/pub/golf-sinteppadon/18/354/614" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View Golf Sinteppadon's LinkedIn profile" style="vertical-align:middle"></span></a>
-	<a href="https://github.com/MiniGolf2000/" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="images/github.png" width="15" height="15" alt="View Golf Sinteppadon's Github profile" style="vertical-align:middle"></span></a>
-		<span class="space">|</span>
-		If you have a potential project or just want to say hello,
-		e-mail me at <a href="mailto:golf.sinteppadon@gmail.com">golf.sinteppadon@gmail.com</a>
-		
-	</p>
+	<div id="footer">
+    <p>
+  		<a href="http://www.linkedin.com/pub/golf-sinteppadon/18/354/614" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View Golf Sinteppadon's LinkedIn profile" style="vertical-align:middle"></span></a>
+  		<a href="https://github.com/MiniGolf2000/" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="images/github.png" width="15" height="15" alt="View Golf Sinteppadon's Github profile" style="vertical-align:middle"></span></a>
+    </p>
+	</div>
 <?php
 include("global/footer.html");
 ?>

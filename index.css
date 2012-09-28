@@ -66,16 +66,10 @@ br {
 	margin-bottom: 0px;
 	padding: 30px;
 	border-top: 1px solid #404140;
-	text-align: center;
 	font-size: .9em;
 }
 
 #footer h2, #footer p {
-	width: 600px;
+	width: 900px;
 	margin: 0px auto;
-}
-
-.space {
-	margin: 0px 10px 0px 5px;
-	color: #888888;
 }
