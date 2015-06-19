@@ -1,0 +1,50 @@
+body {
+    font-family: "Arial", sans-serif;
+}
+
+#message {
+    height: 20px;
+}
+
+#board {
+    position: relative;
+}
+
+.tile {
+    border: 1px solid #999999;
+    background-color: #EEEEEE;
+    position: absolute;
+    text-align: center;
+    font-size: 11px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tile:hover {
+    background-color: #DDDDDD;
+}
+
+.tile.disabled {
+    cursor: default;
+}
+
+.tile.disabled:hover {
+    background-color: #EEEEEE;
+}
+
+.tile.cheat {
+    background-color: #DDDD77;
+}
+
+.tile.mine, .tile.mine:hover {
+    background-color: red;
+}
+
+.flag, .flag:hover {
+    background-color: #66BB66;
+}
