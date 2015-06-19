@@ -1,0 +1,161 @@
+body {
+	color: #333333;
+	background: url(background.jpg) #87AEBF no-repeat center center;
+	margin: 0px;
+}
+
+#container {
+	background: rgb(255, 255, 255);
+	width: 960px;
+	margin: 0px auto;
+	font-family: "Droid Sans", "Arial", sans-serif;
+	color: #555555;
+	/*box-shadow: 0px 0px 0px 3px rgba(255, 255, 255, .3);*/
+	overflow: auto;
+}
+
+#content {
+	padding: 20px;
+	font-size: 14px;
+}
+
+h1 {
+	padding-top: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+h2 {
+	color: #2c8bcc;
+	text-transform: lowercase;
+	letter-spacing: 1.5px;
+	font-weight: normal;
+	margin-top: 0px;
+}
+
+h3 {
+	color: #006BA2;
+}
+
+#description {
+	color: white;
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 0px;
+	background-color: #1F7FAE;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(0,108,162)),
+		color-stop(1, rgb(124,184,210))
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(0,108,162) 0%,
+		rgb(124,184,210) 100%
+	);
+	padding: 30px 40px;
+	border-top: 1px solid #6FB1CD;
+	-moz-box-shadow:
+		0px 0px 3px rgba(000,000,000,0.2),
+		inset 0px 0px 1px rgba(255,255,255,0.7);
+	-webkit-box-shadow:
+		0px 0px 3px rgba(000,000,000,0.2),
+		inset 0px 0px 1px rgba(255,255,255,0.7);
+}
+
+#demodiv {
+	text-align: center;
+	background-color: #C9E0EA;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(201,224,234)),
+		color-stop(1, rgb(255,255,255))
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(201,224,234) 0%,
+		rgb(255,255,255) 100%
+	);
+
+}
+
+#demobutton {
+	margin: 0px auto;
+	padding-top: 25px;
+	color: #006BA2;
+	font-size: 2em;
+	border-bottom: 1px solid #C9E0EA;
+	width: 600px;
+	background: url("images/device.png") no-repeat center bottom;
+	height: 210px;
+	display: block;
+	text-decoration: none;
+}
+
+#demobutton:hover {
+	text-decoration: underline;
+}
+
+p, ul {
+	line-height: 1.6em;
+}
+
+a {
+	color: inherit;
+}
+
+#testimonials p {
+	margin: 6px 0px;
+}
+
+#testimonials .name {
+	font-size: .8em;
+}
+
+#preorderbutton {
+	font-size: 22px;
+	color: #ffffff;
+	padding: 10px 20px;
+	background-color: #1F7FAE;
+	background: -moz-linear-gradient(
+		top,
+		#2c8ccc 0%,
+		#146ba9);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#2c8ccc),
+		to(#146ba9));
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border: 1px solid #146ba9;
+	-moz-box-shadow:
+		0px 0px 3px rgba(000,000,000,0.2),
+		inset 0px 0px 1px rgba(255,255,255,0.7);
+	-webkit-box-shadow:
+		0px 0px 3px rgba(000,000,000,0.2),
+		inset 0px 0px 1px rgba(255,255,255,0.7);
+	text-shadow:
+		0px -1px 8px rgba(000,000,000,0.3),
+		0px 1px 1px rgba(005,000,069,0.5);
+}
+
+#preorderbutton:hover {
+	cursor: pointer;
+}
+
+ul {
+	list-style-type: square;
+}
+
+br {
+	margin: 0px;
+}
+
+a img {
+	border: none;
+}
