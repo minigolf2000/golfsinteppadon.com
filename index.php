@@ -111,7 +111,7 @@ include("global/header.php");
 	<div id="footer">
     <p>
   		<a href="http://www.linkedin.com/pub/golf-sinteppadon/18/354/614" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="View Golf Sinteppadon's LinkedIn profile" style="vertical-align:middle"></span></a>
-  		<a href="https://github.com/minigolf2000/" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="images/github.png" width="15" height="15" alt="View Golf Sinteppadon's Github profile" style="vertical-align:middle"></span></a>
+  		<a href="https://github.com/golfing/" style="text-decoration:none;"><span style="font: 80% Arial,sans-serif;"><img src="images/github.png" width="15" height="15" alt="View Golf Sinteppadon's Github profile" style="vertical-align:middle"></span></a>
     </p>
 	</div>
 <?php
