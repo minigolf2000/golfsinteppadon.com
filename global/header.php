@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="/favicon.ico" />
@@ -11,7 +11,7 @@
 		foreach ($includes as $include) {
 ?>
 	<?php echo $include ?>
-	
+
 <?php
 		}
 	}
