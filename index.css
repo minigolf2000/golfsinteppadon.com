@@ -25,32 +25,27 @@ h1 {
 	margin: 60px 0px;
 }
 
-.portfolio-item h3 {
-	padding-top: 5px;
-}
-
 .portfolio-item img {
 	float: left;
 	margin-right: 30px;
-	border: 1px solid #404140;
 }
 
-.side-project {
+.mini-project {
 	width: 400px;
 	float: left;
 	padding: 20px;
 }
 
-.side-project h3 {
+.mini-project h3 {
 	font-size: 1.35em;
     margin-bottom: 0px;
 }
 
-.side-project h3 a {
+.mini-project h3 a {
 	color: #34ed38;
 }
 
-.side-project img {
+.mini-project img {
 	float: left;
 	margin-right: 20px;
 }

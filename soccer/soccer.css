@@ -2,7 +2,7 @@ html {
 	font-family: "Lucida Sans", "Verdana", sans-serif;
 }
 
-.cloud {
+.section {
 	width: 900px;
 }
 
@@ -18,7 +18,7 @@ h2 {
 	position: relative;
 	padding: 3px;
 	border: 10px solid #008C00;
-	
+
 }
 
 #ball {

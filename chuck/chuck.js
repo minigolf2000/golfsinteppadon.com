@@ -1,8 +1,13 @@
 $(function () {
 
     var _ = {};
+    var facts = [];
 
-    _.initialize = function () {
+    _.initialize = function (facts) {
+        facts.forEach(function (fact) {
+            $("fieldset").append($(`<span class="fact">${fact}</span>`))
+        });
+
         $('.fact').each(function () {
             $(this).html($(this).html().replace("Chuck Norris", "<span class='chucknorris'>Chuck Norris</span>", "gi"));
         });
@@ -34,6 +39,11 @@ $(function () {
         document.title = newName + PAGE_TITLE_SUFFIX;
     }
 
-    _.initialize();
+    fetch('chuck.csv').then(function(resp) {
+        return resp.text()
+    }).then(function(text) {
+        _.initialize(text.split("\n"));
+    })
+
 
 });

@@ -20,14 +20,14 @@ Korean = Class.create({
 		this.xPos = x;
 		this.yPos = y;
 	},
-	
+
 	createHTML: function() {
 		this.container = document.createElement("div");
 		this.container.id = "korean";
 		this.render();
 		return this.container;
 	},
-	
+
 	move: function(direction, magnitude) {
 		switch (direction) {
 			case "up":
@@ -43,7 +43,7 @@ Korean = Class.create({
 				this.xPos -= 2;
 				break;
 		}
-		
+
 		// Check boundaries
 		if (this.yPos < 0) {
 			this.yPos = 0;
@@ -58,7 +58,7 @@ Korean = Class.create({
 			this.yPos = CONSTANTS.HEIGHT - this.container.getHeight();
 		}
 	},
-	
+
 	update: function() {
 		// Update position
 		if (keys.down && !keys.up) {
@@ -74,7 +74,7 @@ Korean = Class.create({
 			this.move("right", 2);
 		}
 	},
-	
+
 	render: function() {
 		this.container.style.left = this.xPos + "px";
 		this.container.style.top = this.yPos + "px";
@@ -89,29 +89,29 @@ Fan = Class.create({
 		this.AISwitchFramesLeft = Math.floor(Math.random() * 200);
 		this.wanderDirection = "";
 	},
-	
+
 	createHTML: function() {
 		this.container = document.createElement("div");
 		this.container.addClassName("fan");
 		this.render();
 		return this.container;
 	},
-	
+
 	_updateAIFrames: function() {
 		this.AISwitchFramesLeft--;
-		
+
 		if (this.AISwitchFramesLeft === 0) {
 			this.AISwitchFramesLeft = 140;
 			this.state = (Math.random() > 0.4) ? "chase" : "wander";
 			this.wanderDirection = "";
 		}
-		
+
 	},
-	
+
 	_chase: function() {
 		var xDistance = korean.xPos - this.xPos,
 			yDistance = korean.yPos - this.yPos;
-		
+
 		if (Math.abs(xDistance) > Math.abs(yDistance)) {
 			this.xPos += xDistance / Math.abs(xDistance);
 		}
@@ -120,14 +120,14 @@ Fan = Class.create({
 		}
 		this._checkBoundaries();
 	},
-	
+
 	_wander: function() {
 		var rand;
 		// If fan needs to change wander direction
 		if (this.wanderDirection === "") {
-		
+
 			rand = Math.random();
-			
+
 			if (rand > 0.75) {
 				this.wanderDirection = function() { this.yPos += 1; };
 			}
@@ -146,7 +146,7 @@ Fan = Class.create({
 		}
 		this._checkBoundaries();
 	},
-	
+
 	_checkBoundaries: function() {
 		if (this.yPos < 0) {
 			this.yPos = 0;
@@ -165,7 +165,7 @@ Fan = Class.create({
 			this.wanderDirection = function() { this.yPos -= 1; };
 		}
 	},
-	
+
 	_checkKoreanCollision: function() {
 		// Check if collided with Korean
 		var X_SHRINKAGE = 12, // amount to shrink the hitboxes by horizontally
@@ -177,15 +177,15 @@ Fan = Class.create({
 				message.id = "message";
 				message.textContent = "SUFFOCATED! " + ($("timer").textContent / 1000) + "s";
 				$("frame").appendChild(message);
-				
+
 				clearInterval(gameTimer);
-				submitHighScore1();
+				setTimeout(resetGame, 2000);
 		}
 	},
-	
+
 	update: function() {
 		this._updateAIFrames()
-		
+
 		// Move fan depending on state
 		switch (this.state) {
 		case "chase":
@@ -195,10 +195,10 @@ Fan = Class.create({
 			this._wander();
 			break;
 		}
-		
+
 		this._checkKoreanCollision();
 	},
-	
+
 	render: function() {
 		this.container.style.left = this.xPos + "px";
 		this.container.style.top = this.yPos + "px";
@@ -210,81 +210,15 @@ var keys, CONSTANTS, korean, fans, gameTimer;
 Event.observe(window, "load", function() {
 	keys = new Keys();
 	CONSTANTS = new Constants();
-	
-	showHighScores1();
-	
+
+	resetGame();
+
 	$("frame").style.height = CONSTANTS.HEIGHT + "px";
 	$("frame").style.width = CONSTANTS.WIDTH + "px";
-	
+
 	Event.observe(document, "keydown", keyPress);
 	Event.observe(document, "keyup", keyPress);
 });
-
-function submitHighScore1() {
-	var score = $("timer").textContent,
-		name = "BBB";
-	new Ajax.Request("highscore.php", { method: "post", onSuccess: function(ajax) { setTimeout(submitHighScore2, 2000, ajax); }, parameters: { "checkIfHighScore": "true", "name": name, "score": score }});
-	
-}
-
-function submitHighScore2(ajax) {
-	clearFrame();
-	if (ajax.responseText === "yes") {
-		// Prompt for player name
-		
-		var message = document.createElement("p");
-		message.id = "message";
-
-		var namePrompt = document.createElement("div");
-		
-		var description = document.createElement("p");
-		description.textContent = "You got a new record! Please enter your initials";
-		message.appendChild(description);
-		
-		var submitForm = document.createElement("form");
-		Event.observe(submitForm, "submit", submitHighScore3);
-		var textInput = document.createElement("input");
-		textInput.type = "text";
-		textInput.maxLength = 3;
-		submitForm.appendChild(textInput);
-		message.appendChild(submitForm);
-		$("frame").appendChild(message);
-		textInput.focus();
-	}
-	else { // ajax.responseText == "no"
-		showHighScores1();
-	}
-}
-
-function submitHighScore3(e) {
-	Event.stop(e);
-	var score = $("timer").textContent;
-	var name = e.currentTarget.firstChild.value.toUpperCase();
-	new Ajax.Request("highscore.php", { method: "post", onSuccess: showHighScores2, parameters: { "submitHighScore": "true", "name": name, "score": score }});
-}
-
-function showHighScores1() {
-	new Ajax.Request("highscore.php", { method: "post", onSuccess: showHighScores2 });
-}
-
-function showHighScores2(ajax) {
-	clearFrame();
-	var highscores = document.createElement("div");
-	highscores.id = "highscores";
-	$("frame").appendChild(highscores);
-	highscores.innerHTML = ajax.responseText;
-	
-	// Add play button
-	var playButtonDiv = document.createElement("div");
-	playButtonDiv.id = "playButtonDiv";
-	var playButton = document.createElement("button");
-	playButton.id = "playButton";
-	playButton.onclick = resetGame;
-	playButton.textContent = "Start Game";
-	playButtonDiv.appendChild(playButton);
-	highscores.appendChild(playButtonDiv);
-	playButton.focus();
-}
 
 function resetGame() {
 
@@ -292,9 +226,9 @@ function resetGame() {
 	for (var i = 0; i < frameChildren.length; i++) {
 		$("frame").removeChild(frameChildren[i]);
 	}
-	
+
 	$("timer").textContent = "0";
-	
+
 	korean = new Korean(CONSTANTS.WIDTH / 2, CONSTANTS.HEIGHT / 2);
 	fans = [
 		new Fan(0, 0),
@@ -302,12 +236,12 @@ function resetGame() {
 		new Fan(CONSTANTS.WIDTH, 0),
 		new Fan(CONSTANTS.WIDTH, CONSTANTS.HEIGHT)
 	];
-	
+
 	$("frame").appendChild(korean.createHTML());
 	for (var i = 0; i < fans.length; i++) {
 		$("frame").appendChild(fans[i].createHTML());
 	}
-	
+
 	gameTimer = setInterval(loop, 1000 / CONSTANTS.FPS);
 }
 
@@ -315,7 +249,7 @@ function resetGame() {
 function loop() {
 	korean.update();
 	korean.render();
-	
+
 	$("timer").textContent = parseInt(parseInt($("timer").textContent) + 1000 / CONSTANTS.FPS);
 	for (var i = 0; i < fans.length; i++) {
 		fans[i].update();
@@ -326,7 +260,7 @@ function loop() {
 function keyPress(e) {
 	// true onkeydown, false onkeyup
 	var pressed = (e.type == "keydown");
-	
+
 	switch (e.keyCode) {
 	case Event.KEY_UP:
 		Event.stop(e); // Prevent arrow keys from scrolling the page
