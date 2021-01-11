@@ -222,7 +222,7 @@ Event.observe(window, "load", function() {
 
 function resetGame() {
 
-	var frameChildren = $$("#highscores");
+	var frameChildren = $$("#korean, #message, .fan");
 	for (var i = 0; i < frameChildren.length; i++) {
 		$("frame").removeChild(frameChildren[i]);
 	}

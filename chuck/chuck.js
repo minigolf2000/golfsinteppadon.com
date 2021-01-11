@@ -5,7 +5,7 @@ $(function () {
 
     _.initialize = function (facts) {
         facts.forEach(function (fact) {
-            $("fieldset").append($(`<span class="fact">${fact}</span>`))
+            $("#fact-container").append($(`<span class="fact">${fact}</span>`))
         });
 
         $('.fact').each(function () {
@@ -33,9 +33,9 @@ $(function () {
      */
     _.refreshName = function () {
         var newName = $("#nameinput").val() || "_";
-        $('.chucknorris.static, .visible .chucknorris').text(newName);
+        $('.visible .chucknorris').text(newName);
 
-        var PAGE_TITLE_SUFFIX = " Fact Generator | Golf Sinteppadon";
+        var PAGE_TITLE_SUFFIX = " Facts | Golf Sinteppadon";
         document.title = newName + PAGE_TITLE_SUFFIX;
     }
 

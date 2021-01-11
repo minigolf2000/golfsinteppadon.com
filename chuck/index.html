@@ -2,7 +2,7 @@
 	<link rel="stylesheet" type="text/css" href="chuck.css" />
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="chuck.js"></script>
-	<title>Chuck Norris Fact Generator - Golf Sinteppadon</title>
+	<title>Chuck Norris Facts - Golf Sinteppadon</title>
 </head>
 <body>
 <div id="container">
@@ -10,15 +10,14 @@
 
 	<div id="content">
 		<div class="section">
-			<h2><span class="chucknorris static">Chuck Norris</span> Fact Generator</h2>
-			<fieldset>
-				<legend><strong><span class="chucknorris static">Chuck Norris</span> Fact</strong></legend>
-			</fieldset>
-			<p><span id="nextfact">See next fact</span></p>
+			<div id="fact-container"></div>
+			<div id="footer">
+				<span id="nextfact">Generate next fact</span>
 
-			<label>
-				<strong>Now viewing facts about</strong>
-				<input id="nameinput" autocomplete="off" type="text" name="name" value="Chuck Norris" />
-			</label>
+				<label id="label" for="name">
+					Now viewing facts about
+					<input id="nameinput" autocomplete="off" type="text" name="name" value="Chuck Norris" />
+				</label>
+			</div>
 		</div>
 <!--# include virtual="/global/footer.html" -->

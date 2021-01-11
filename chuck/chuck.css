@@ -1,5 +1,8 @@
-h2 {
-	line-height: 1.2em;
+#fact-container {
+	line-height: 1.6em;
+	font-size: 52px;
+	margin: 96px 0;
+	min-height: 240px;
 }
 
 .section > p {
@@ -27,9 +30,18 @@ legend {
 	display: inline;
 }
 
+#footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#label {
+	display: inline-flex;
+	align-items: center;
+}
 #nextfact {
 	cursor: pointer;
-	color: #4DCBF4;
 	font-weight: bold;
 }
 
@@ -40,9 +52,8 @@ legend {
 input {
 	background-color: transparent;
 	border: none;
-	border-bottom: 3px dotted white;
+	border-bottom: 2px dotted black;
 	font-size: 2em;
 	margin-left: 10px;
 	min-width: 100px;
-	color: #F9FF60;
 }
