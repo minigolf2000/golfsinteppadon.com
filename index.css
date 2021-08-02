@@ -19,6 +19,10 @@
 	font-weight: bold;
 }
 
+p {
+	line-height: 1.5em;
+}
+
 #personal-projects {
 	margin-left: -3px; /* manual padding to make the letter "P" line up with left edge */
 	letter-spacing: 7px;
@@ -63,21 +67,3 @@
 #footer .divider {
 	margin: 0px 8px;
 }
-
-/* .mini-project {
-	width: 400px;
-	padding: 20px;
-}
-
-.mini-project h3 {
-	font-size: 1.35em;
-    margin-bottom: 0px;
-}
-
-.mini-project h3 a {
-	color: #34ed38;
-}
-
-.mini-project img {
-	margin-right: 20px;
-} */
