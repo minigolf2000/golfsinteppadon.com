@@ -1,0 +1,18 @@
+#frame {
+	background-image: url("/assets/images/blocky/watercolor.jpg");
+	margin: 0px auto;
+	position: relative;
+}
+
+#controls {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+#blocky {
+	width: 128px;
+	height: 128px;
+	position: absolute;
+	background-image: url("/assets/images/blocky/blocky.png");
+	background-repeat: none;
+}

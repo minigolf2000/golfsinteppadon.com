@@ -1,0 +1,72 @@
+---
+---
+
+#👋-container {
+	position: absolute;
+}
+#👋 {
+	position: relative;
+	right: 70px;
+}
+
+#hello {
+	font-size: 36px;
+	line-height: 150%;
+	margin: 148px 0px;
+	font-style: italic;
+	font-weight: normal;
+	text-transform: inherit;
+}
+
+#hello #golfsinteppadon {
+	font-weight: bold;
+}
+
+p {
+	line-height: 1.5em;
+}
+
+#personal-projects {
+	margin-left: -3px; /* manual padding to make the letter "P" line up with left edge */
+	letter-spacing: 7px;
+}
+
+.portfolio-item-large {
+	overflow: auto;
+	margin: 88px 0px;
+}
+
+.mini {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 88px 0;
+}
+
+.portfolio-item-small {
+	width: 340px;
+	margin-right: 60px;
+	margin-bottom: 52px;
+	display: flex;
+	flex-direction: column;
+}
+
+.portfolio-item-small p {
+	margin: 8px 0;
+}
+
+#footer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	margin-bottom: 48px;
+}
+
+#footer-angle-bracket {
+	margin-right: 16px;
+}
+
+#footer .divider {
+	margin: 0px 8px;
+}

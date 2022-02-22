@@ -1,0 +1,56 @@
+#gameboard {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	height: 480px;
+	width: 480px;
+	background-color: white;
+	border: 2px solid #999999;
+}
+
+#gameboard div {
+	position: absolute;
+	height: 56px;
+	width: 56px;
+}
+
+#message {
+	margin-top: 15px;
+	font-size: 22px;
+	height: 30px;
+	text-align: center;
+}
+
+div.playable {
+	background-color: #CCCCCC;
+	border: 2px solid #CCCCCC;
+}
+
+div.blue {
+	background-image: url("/assets/images/checkers/blue.png");
+}
+
+div.red {
+	background-image: url("/assets/images/checkers/red.png");
+}
+
+div.blue.king {
+	background-image: url("/assets/images/checkers/blueking.png");
+}
+
+div.red.king {
+	background-image: url("/assets/images/checkers/redking.png");
+}
+
+div.selected {
+	background-color: #888888;
+	border: 2px solid #888888;
+}
+
+#gameboard div.highlightred {
+	border: 2px solid red;
+}
+
+#gameboard div.highlightblue {
+	border: 2px solid blue;
+}

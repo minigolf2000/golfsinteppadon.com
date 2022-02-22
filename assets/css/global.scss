@@ -1,0 +1,59 @@
+---
+---
+
+html, body {
+	margin: 0px;
+	padding: 0px;
+}
+
+html {
+	font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+	font-size: 14px;
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+h1, h2 {
+	margin: 0px;
+	padding: 0px;
+}
+
+h1 {
+	font-weight: 800;
+	font-size: 58px;
+	letter-spacing: 3px;
+	margin: 30px auto;
+	text-transform: uppercase;
+}
+
+h2 a {
+	text-decoration: none;
+}
+
+h2 a:hover {
+	text-decoration: underline;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: 24px;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+a img {
+	border-style: none;
+}
+
+p {
+	margin: 24px 0px;
+}
+
+#container {
+	width: 800px;
+	margin: 0px auto;
+	padding: 0px 32px;
+}
