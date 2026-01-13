@@ -14,15 +14,21 @@ function PortfolioItem({
   url: string;
 }) {
   return (
-    <div className="overflow-auto my-26">
-      <h2 className="m-0 p-0 font-bold text-2xl tracking-[3px] uppercase">
+    <div className="my-26">
+      <h2 className="font-bold text-2xl tracking-[3px] uppercase">
         <a href={url} className="no-underline hover:underline">
           {title}
         </a>
       </h2>
-      <p className="my-6 mx-0 leading-[1.5em]">{description}</p>
+      <p className="my-6 leading-[1.5em]">{description}</p>
       <a href={url}>
-        <Image src={imageUrl} alt={imageAlt} width={800} height={400} />
+        <Image
+          src={imageUrl}
+          alt={imageAlt}
+          width={800}
+          height={400}
+          className="hover:outline-4 outline-zinc-900 -outline-offset-3"
+        />
       </a>
     </div>
   );
@@ -31,15 +37,13 @@ function PortfolioItem({
 export default function Home() {
   return (
     <div className="w-200 mx-auto py-0">
-      <h1 className="text-[36px] leading-[150%] my-37 italic font-normal normal-case tracking-[3px]">
-        <div className="absolute">
-          <div className="relative right-19">👋</div>
-        </div>
+      <h1 className="text-[36px] leading-[150%] my-37 italic tracking-[3px] relative">
+        <span className="absolute -left-16">👋</span>
         I&apos;m <span className="font-bold">Golf Sinteppadon</span>, a software
         engineer currently at Figma
       </h1>
 
-      <h1 className="m-0 p-0 font-extrabold text-[58px] tracking-[7px] my-9 mx-auto uppercase -ml-1">
+      <h1 className="font-extrabold text-[58px] tracking-[7px] my-9 uppercase -ml-1">
         Personal Projects
       </h1>
 
@@ -89,10 +93,7 @@ export default function Home() {
 
       <PortfolioItem
         title="Figma Plugin: Zelda Maker"
-        description="A Figma Plugin to play and make Zelda worlds. Create worlds right in
-          Figma, then run this Plugin to play them! Figma is a collaborative
-          interface design tool, and I think level design for games is another
-          type of design that benefits greatly from collaboration."
+        description="A Figma Plugin to play and make Zelda worlds. Create worlds right in Figma, then run this Plugin to play them! Figma is a collaborative interface design tool, and I think level design for games is another type of design that benefits greatly from collaboration."
         imageUrl="/figma-zelda-maker.png"
         imageAlt="zelda maker"
         url="https://www.figma.com/community/plugin/846537436529611787/Zelda-Maker"
@@ -100,10 +101,7 @@ export default function Home() {
 
       <PortfolioItem
         title="Figma Plugin: Asteroids"
-        description='Play the arcade game Asteroids in Figma with friends! Supports
-          multiplayer. This Figma Maker Week project was inspired by a quote
-          from a coworker "Figma is a multiplayer game engine that happens to be
-          used for UX design".'
+        description='Play the arcade game Asteroids in Figma with friends! Supports multiplayer. This Figma Maker Week project was inspired by a quote from a coworker "Figma is a multiplayer game engine that happens to be used for UX design".'
         imageUrl="/figma-asteroids.png"
         imageAlt="figma asteroids"
         url="https://www.figma.com/community/plugin/916835579596798269/Figma-Asteroids"
@@ -149,10 +147,7 @@ export default function Home() {
 
       <PortfolioItem
         title="Virtuoso Sheet Music"
-        description="Virtuoso is a concept sheet music device that is designed to replace a
-          musician's sheet music library. Made for a UW Human Centered
-          Design & Engineering class, our team gathered feedback from student
-          musicians in an attempt to rediscover sheet music."
+        description="Virtuoso is a concept sheet music device that is designed to replace a musician's sheet music library. Made for a UW Human Centered Design & Engineering class, our team gathered feedback from student musicians in an attempt to rediscover sheet music."
         imageUrl="/virtuoso-sheet-music.png"
         imageAlt="virtuoso sheet music prototype"
         url="https://www.virtuososheetmusic.com/"
@@ -199,14 +194,13 @@ export default function Home() {
         url="https://www.seattlebandmap.com/"
       />
 
-      <div className="flex flex-row items-center justify-end mb-12">
+      <div className="flex items-center justify-end mb-12">
         <svg
           className="mr-4"
           width="43"
           height="79"
           viewBox="0 0 43 79"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M3 3L39 39.5L3 76"
@@ -221,11 +215,11 @@ export default function Home() {
         >
           LinkedIn
         </a>
-        <div className="mx-2">/</div>
+        <span className="mx-2">/</span>
         <a className="underline" href="https://github.com/minigolf2000/">
           Github
         </a>
-        <div className="mx-2">/</div>
+        <span className="mx-2">/</span>
         <a className="underline" href="https://figma.com/@minigolf2000/">
           Figma
         </a>
