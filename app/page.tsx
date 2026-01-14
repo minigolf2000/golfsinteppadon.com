@@ -14,20 +14,20 @@ function PortfolioItem({
   url: string;
 }) {
   return (
-    <div className="my-26">
-      <h2 className="font-bold text-2xl tracking-[3px] uppercase">
+    <div className="my-12 md:my-20">
+      <h2 className="font-bold text-xl md:text-2xl tracking-[3px] uppercase">
         <a href={url} className="no-underline hover:underline">
           {title}
         </a>
       </h2>
-      <p className="my-6 leading-[1.5em]">{description}</p>
-      <a href={url}>
+      <p className="my-4 md:my-6 leading-[1.5em]">{description}</p>
+      <a href={url} className="block">
         <Image
           src={imageUrl}
           alt={imageAlt}
           width={800}
           height={400}
-          className="hover:outline-4 outline-zinc-900 -outline-offset-3"
+          className="w-full h-auto hover:outline-4 outline-zinc-900 -outline-offset-3"
         />
       </a>
     </div>
@@ -36,14 +36,14 @@ function PortfolioItem({
 
 export default function Home() {
   return (
-    <div className="w-200 mx-auto py-0">
-      <h1 className="text-[36px] leading-[150%] my-37 italic tracking-[3px] relative">
+    <div className="max-w-200 w-full px-4 mx-auto py-0">
+      <h1 className="text-2xl md:text-3xl leading-[150%] my-12 md:my-20 italic tracking-[3px] relative">
         <span className="absolute -left-16">👋</span>
         I&apos;m <span className="font-bold">Golf Sinteppadon</span>, a software
         engineer currently at Figma
       </h1>
 
-      <h1 className="font-extrabold text-[58px] tracking-[7px] my-9 uppercase -ml-1">
+      <h1 className="font-extrabold text-4xl md:text-5xl tracking-[7px] my-9 uppercase -ml-1">
         Personal Projects
       </h1>
 
