@@ -55,7 +55,7 @@ export default function Home() {
               className="underline"
               href="https://twitter.com/minigolf2000/status/1542210618073255936"
             >
-              GIF from Twitter
+              Twitter GIF
             </a>
             . Visit a petting zoo, play hide and seek, race go karts, and more!
             Powered by Widgets, Interactive Figmaland is a multiplayer
@@ -75,15 +75,15 @@ export default function Home() {
               className="underline"
               href="https://twitter.com/minigolf2000/status/1403020118586662917"
             >
-              GIF from Twitter
+              Twitter GIF
             </a>
             . Race to the finish vs. up to 100 people on your own custom race
-            courses w/ my Figma Maker Week Plugin, 100 Race! This is a simple
-            plugin that takes in user input and does some platforming
-            calculations to move a node around. The viewport then follows that
-            node. The magic lies in Figma&apos;s multiplayer, which lets up to
-            100 users run this plugin simultaneously to edit nodes on the same
-            page.
+            courses w/ my Figma Maker Week Plugin, 100 Race! This plugin takes
+            in user input and does some platforming calculations to move a
+            character. The viewport follows your character. The magic lies in
+            Figma&apos;s multiplayer, which lets up to 100 users run this plugin
+            simultaneously to edit nodes on the same page, creating a battle
+            royal race to the finish.
           </>
         }
         imageUrl="/figma-100-race.png"
@@ -93,7 +93,7 @@ export default function Home() {
 
       <PortfolioItem
         title="Figma Plugin: Zelda Maker"
-        description="A Figma Plugin to play and make Zelda worlds. Create worlds right in Figma, then run this Plugin to play them! Figma is a collaborative interface design tool, and I think level design for games is another type of design that benefits greatly from collaboration."
+        description="A Figma Plugin to play and make Zelda worlds. Create worlds right in Figma, then run this Plugin to play them. Figma is a collaborative interface design tool, and level design for games is another type of design that benefits greatly from multiplayer collaboration."
         imageUrl="/figma-zelda-maker.png"
         imageAlt="zelda maker"
         url="https://www.figma.com/community/plugin/846537436529611787/Zelda-Maker"
@@ -101,7 +101,7 @@ export default function Home() {
 
       <PortfolioItem
         title="Figma Plugin: Asteroids"
-        description='Play the arcade game Asteroids in Figma with friends! Supports multiplayer. This Figma Maker Week project was inspired by a quote from a coworker "Figma is a multiplayer game engine that happens to be used for UX design".'
+        description='Play the arcade game Asteroids in Figma with friends! Supports multiplayer. This Figma Maker Week project was inspired by a coworker quote: "Figma is a multiplayer game engine that happens to be used for UX design".'
         imageUrl="/figma-asteroids.png"
         imageAlt="figma asteroids"
         url="https://www.figma.com/community/plugin/916835579596798269/Figma-Asteroids"
