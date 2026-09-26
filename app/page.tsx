@@ -161,7 +161,7 @@ export default function Home() {
     <div className="max-w-200 w-full px-4 mx-auto py-0">
       <h1 className="text-2xl md:text-3xl leading-[150%] my-12 md:my-20 italic tracking-[3px] relative">
         <span className="absolute -left-16">👋</span>
-        I&apos;m <span className="font-bold">Golf Sinteppadon</span>
+        <span className="font-bold">Golf Sinteppadon</span>
       </h1>
 
       <section>
@@ -202,7 +202,7 @@ export default function Home() {
           />
           <GameCard
             title="Goomba Glider"
-            description="A Line Rider–inspired puzzle game. Help Goomba water the plants."
+            description="A Line Rider–inspired puzzle game. Help Goomba water the plant."
             image={{
               src: "/goomba-glider.png",
               alt: "Goomba the orange cat on a board, with a watering can and a potted plant against a night sky",
