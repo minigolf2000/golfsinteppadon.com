@@ -1,51 +1,114 @@
 import Image from "next/image";
 
+type Trait = { label: string; score: number };
+
+function Dots({ score }: { score: number }) {
+  return (
+    <span
+      role="img"
+      aria-label={`${score} of 5`}
+      className="inline-flex gap-[3px] align-middle"
+    >
+      {[0, 1, 2, 3, 4].map((i) => (
+        <i
+          key={i}
+          className={`size-[7px] rounded-full border-[1.5px] border-current ${
+            i < score ? "bg-current" : ""
+          }`}
+        />
+      ))}
+    </span>
+  );
+}
+
 function GameCard({
   title,
   description,
-  imageUrl,
-  imageAlt,
+  image,
   url,
   domain,
-  className,
-  buttonClassName,
+  cat,
+  theme,
 }: {
   title: string;
-  description: string;
-  imageUrl: string;
-  imageAlt: string;
+  description?: string;
+  image: { src: string; alt: string; width: number; height: number };
   url: string;
   domain: string;
-  className: string;
-  buttonClassName: string;
+  cat: {
+    name: string;
+    photo: string;
+    photoAlt: string;
+    bio: string;
+    traits: Trait[];
+  };
+  theme: {
+    card: string;
+    ink: string;
+    muted: string;
+    rule: string;
+    button: string;
+  };
 }) {
   return (
-    <a
-      href={url}
-      className={`group flex flex-col rounded-2xl overflow-hidden no-underline ${className}`}
+    <article
+      className={`flex flex-col gap-4 rounded-2xl p-3 pb-5 ${theme.card}`}
     >
-      <Image
-        src={imageUrl}
-        alt={imageAlt}
-        width={1280}
-        height={720}
-        className="w-full h-auto"
-      />
-      <div className="flex flex-col gap-3 flex-1 px-5 pt-5 pb-6">
-        <h3 className="font-extrabold text-xl md:text-2xl tracking-[3px] uppercase">
-          {title}
+      <a href={url} className="block overflow-hidden rounded-lg">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          className="w-full h-auto"
+        />
+      </a>
+      <div className="px-1.5">
+        <h3 className="font-extrabold text-2xl tracking-[3px] uppercase leading-tight">
+          <a href={url} className="no-underline">
+            {title}
+          </a>
         </h3>
-        <p className="leading-[1.5em]">{description}</p>
-        <div className="mt-auto pt-2 flex items-center gap-3">
-          <span
-            className={`rounded-full px-5 py-2 font-bold text-sm tracking-[1px] uppercase group-hover:underline ${buttonClassName}`}
-          >
-            Play ▸
-          </span>
-          <span className="text-sm opacity-80">{domain}</span>
-        </div>
+        {description && (
+          <p className="mt-2 leading-[1.5em]">{description}</p>
+        )}
       </div>
-    </a>
+      <a
+        href={url}
+        className={`mx-1.5 rounded-full px-4 py-3 text-center font-bold text-sm tracking-[1px] uppercase no-underline hover:underline ${theme.button}`}
+      >
+        Play at {domain} ▸
+      </a>
+      <div
+        className={`mx-1.5 mt-auto flex flex-col gap-2 border-t pt-4 ${theme.rule}`}
+      >
+        <div className="grid grid-cols-[52px_1fr] gap-3 items-start">
+          <Image
+            src={cat.photo}
+            alt={cat.photoAlt}
+            width={120}
+            height={120}
+            className="w-full aspect-square rounded-full object-cover"
+          />
+          <p className={`text-[13px] leading-[1.5em] ${theme.muted}`}>
+            <b className={`font-bold ${theme.ink}`}>Starring {cat.name}.</b>{" "}
+            {cat.bio}
+          </p>
+        </div>
+        <p
+          className={`flex flex-wrap gap-x-3.5 gap-y-1 pl-16 text-[11px] ${theme.muted}`}
+        >
+          {cat.traits.map((t) => (
+            <span key={t.label} className="whitespace-nowrap">
+              <b className="font-bold text-[10px] tracking-[1.5px] uppercase">
+                {t.label}
+              </b>{" "}
+              <Dots score={t.score} />
+            </span>
+          ))}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -98,8 +161,7 @@ export default function Home() {
     <div className="max-w-200 w-full px-4 mx-auto py-0">
       <h1 className="text-2xl md:text-3xl leading-[150%] my-12 md:my-20 italic tracking-[3px] relative">
         <span className="absolute -left-16">👋</span>
-        I&apos;m <span className="font-bold">Golf Sinteppadon</span>, a software
-        engineer currently at Figma
+        I&apos;m <span className="font-bold">Golf Sinteppadon</span>
       </h1>
 
       <section>
@@ -109,29 +171,66 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <GameCard
             title="Hex Clicker"
-            description="A cookie clicker starring Hex. Pet her for mice, build a mouse empire, then put her to sleep and watch her dreams spell out a secret word."
-            imageUrl="/hex-clicker.png"
-            imageAlt="Hex the black cat over a pink polka-dot sky, with the upgrade shop open below"
+            description="Pet Hex, build a mouse empire, find out what Hex is dreaming about."
+            image={{
+              src: "/hex-clicker.png",
+              alt: "Hex the black cat over a pink polka-dot sky, with the upgrade shop open below",
+              width: 1280,
+              height: 720,
+            }}
             url="https://hexxygon.com/"
             domain="hexxygon.com"
-            className="bg-[#f4c3c5] text-[#2a1719]"
-            buttonClassName="bg-[#2a1719] text-white"
+            cat={{
+              name: "Hex",
+              photo: "/hex.jpg",
+              photoAlt: "Hex, a black and white tuxedo cat, lying on a mat",
+              bio: "Tuxedo. Looks classy, yowls before every jump, and will cross the house for a neon mouse. We never know what she's thinking. Probably nothing.",
+              traits: [
+                { label: "Vocal", score: 5 },
+                { label: "Zoomies", score: 4 },
+                { label: "Brains", score: 1 },
+                { label: "Thoughts", score: 0 },
+              ],
+            }}
+            theme={{
+              card: "bg-[#f4c3c5] text-[#2a1719]",
+              ink: "text-[#2a1719]",
+              muted: "text-[#2a1719]/65",
+              rule: "border-[#2a1719]/15",
+              button: "bg-[#2a1719] text-white",
+            }}
           />
           <GameCard
             title="Goomba Glider"
-            description="A line rider where the track is silly bandz. Stretch four bands, hit play, and steer Goomba past every watering can to the plant."
-            imageUrl="/goomba-glider.png"
-            imageAlt="Goomba the orange cat on a board, with a watering can and a potted plant against a night sky"
+            image={{
+              src: "/goomba-glider.png",
+              alt: "Goomba Glider's title screen: help Goomba water the plant. Drag to place a band, tap it to take it back.",
+              width: 1200,
+              height: 900,
+            }}
             url="https://g00.mba/"
             domain="g00.mba"
-            className="bg-[#1c1030] text-[#f2eaff]"
-            buttonClassName="bg-[#4fd1c5] text-[#12091f]"
+            cat={{
+              name: "Goomba",
+              photo: "/goomba.jpg",
+              photoAlt: "Goomba, a brown tabby cat, looking up at the camera",
+              bio: "Brown tabby. A very agile cat who can jump to any shelf or ledge, and has a penchant for eating houseplants. Exhibits human emotions like longing and jealousy.",
+              traits: [
+                { label: "Cuddly", score: 5 },
+                { label: "Agility", score: 5 },
+                { label: "Houseplants", score: 5 },
+                { label: "Spite", score: 5 },
+              ],
+            }}
+            theme={{
+              card: "bg-[#1c1030] text-[#f2eaff]",
+              ink: "text-[#f2eaff]",
+              muted: "text-[#f2eaff]/65",
+              rule: "border-[#f2eaff]/15",
+              button: "bg-[#4fd1c5] text-[#12091f]",
+            }}
           />
         </div>
-        <p className="text-sm text-zinc-600 mt-4">
-          Both started as four-player co-op puzzles for a real escape room, and
-          now run solo in any browser.
-        </p>
       </section>
 
       <section className="mt-14 md:mt-20 mb-12">
@@ -172,12 +271,7 @@ export default function Home() {
           <FooterLinks
             links={[
               { title: "Gfychess", url: "https://www.gfychess.com/" },
-              { title: "Mad Castles", url: "https://www.madcastles.com/" },
-              {
-                title: "Virtuoso Sheet Music",
-                url: "https://www.virtuososheetmusic.com/",
-              },
-              { title: "Winsome", url: "http://www.winsomewood.com/" },
+              { title: "Winsome", url: "https://www.winsomewood.com/" },
               {
                 title: "Seattle Band Map",
                 url: "https://www.seattlebandmap.com/",
