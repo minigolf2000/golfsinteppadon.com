@@ -75,7 +75,7 @@ function GameCard({
       </div>
       <a
         href={url}
-        className={`mx-1.5 rounded-full px-4 py-3 text-center font-bold text-sm tracking-[1px] uppercase no-underline hover:underline ${theme.button}`}
+        className={`mx-1.5 rounded-full px-4 py-3 text-center font-bold text-sm tracking-[1px] uppercase no-underline transition-colors duration-150 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#ff3d8b] ${theme.button}`}
       >
         Play at {domain} ▸
       </a>
@@ -126,17 +126,17 @@ function PluginItem({
   return (
     <a
       href={url}
-      className="group grid content-start grid-cols-2 md:grid-cols-1 gap-3 md:gap-2 items-center md:items-start no-underline"
+      className="grid content-start grid-cols-2 md:grid-cols-1 gap-3 md:gap-2 items-center md:items-start rounded-xl border border-zinc-200 bg-white p-2 md:pb-3 no-underline transition duration-150 hover:-translate-y-0.5 hover:border-zinc-900 hover:shadow-lg focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
       <Image
         src={imageUrl}
         alt=""
         width={800}
         height={400}
-        className="w-full aspect-[2/1] object-cover rounded-md border border-zinc-200 group-hover:outline-3 outline-zinc-900 -outline-offset-2"
+        className="w-full aspect-[2/1] object-cover rounded-md"
       />
-      <div>
-        <h3 className="font-bold text-sm tracking-[1px] uppercase group-hover:underline">
+      <div className="md:px-1">
+        <h3 className="font-bold text-sm tracking-[1px] uppercase">
           {title}
         </h3>
         <p className="text-sm text-zinc-600 leading-[1.4em]">{description}</p>
@@ -197,7 +197,8 @@ export default function Home() {
               ink: "text-[#2a1719]",
               muted: "text-[#2a1719]/65",
               rule: "border-[#2a1719]/15",
-              button: "bg-[#2a1719] text-white",
+              button:
+                "bg-[#2a1719] text-white hover:bg-[#ff3d8b] hover:text-white",
             }}
           />
           <GameCard
@@ -228,7 +229,8 @@ export default function Home() {
               ink: "text-[#f2eaff]",
               muted: "text-[#f2eaff]/65",
               rule: "border-[#f2eaff]/15",
-              button: "bg-[#4fd1c5] text-[#12091f]",
+              button:
+                "bg-[#4fd1c5] text-[#12091f] hover:bg-[#ffd23f] hover:text-[#12091f]",
             }}
           />
         </div>
