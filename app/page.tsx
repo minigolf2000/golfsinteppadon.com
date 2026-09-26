@@ -181,7 +181,7 @@ export default function Home() {
             cat={{
               name: "Hex",
               photo: "/hex.jpg",
-              photoAlt: "Hex, a black and white tuxedo cat, lying on a mat",
+              photoAlt: "Hex, a black and white tuxedo cat, with her paws on a fleece blanket",
               bio: "Tuxedo. Looks classy, yowls before every jump, and will cross the house for a neon mouse. We never know what she's thinking. Probably nothing.",
               traits: [
                 { label: "Vocal", score: 5 },
