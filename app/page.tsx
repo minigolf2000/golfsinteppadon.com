@@ -202,7 +202,7 @@ export default function Home() {
           />
           <GameCard
             title="Goomba Glider"
-            description="Line Rider inspired puzzle game. Help Goomba water the plants."
+            description="A Line Rider–inspired puzzle game. Help Goomba water the plants."
             image={{
               src: "/goomba-glider.png",
               alt: "Goomba the orange cat on a board, with a watering can and a potted plant against a night sky",
