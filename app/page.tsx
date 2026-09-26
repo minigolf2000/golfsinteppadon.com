@@ -53,7 +53,7 @@ function GameCard({
   return (
     <a
       href={url}
-      className={`group flex flex-col gap-4 rounded-2xl p-3 pb-5 no-underline transition duration-150 hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#f4f2f7] motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${theme.card}`}
+      className={`group flex flex-col gap-4 rounded-2xl p-3 pb-5 no-underline transition duration-150 hover:-translate-y-px focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#f4f2f7] motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${theme.card}`}
     >
       <div className="overflow-hidden rounded-lg">
         <Image
@@ -124,7 +124,7 @@ function PluginItem({
   return (
     <a
       href={url}
-      className="grid content-start grid-cols-[128px_1fr] md:grid-cols-1 items-stretch md:items-start overflow-hidden rounded-xl bg-[#17161d] no-underline transition duration-150 hover:-translate-y-0.5 hover:bg-[#1f1e27] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#f4f2f7] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+      className="grid content-start grid-cols-[128px_1fr] md:grid-cols-1 items-stretch md:items-start overflow-hidden rounded-xl bg-[#17161d] no-underline transition duration-150 hover:-translate-y-px hover:bg-[#1f1e27] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#f4f2f7] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
       <Image
         src={imageUrl}
