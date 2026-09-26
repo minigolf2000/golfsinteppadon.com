@@ -1,37 +1,96 @@
 import Image from "next/image";
 
-function PortfolioItem({
+function GameCard({
   title,
   description,
   imageUrl,
   imageAlt,
   url,
+  domain,
+  className,
+  buttonClassName,
 }: {
   title: string;
-  description: React.ReactNode;
+  description: string;
   imageUrl: string;
   imageAlt: string;
   url: string;
+  domain: string;
+  className: string;
+  buttonClassName: string;
 }) {
   return (
-    <div className="my-12 md:my-20">
-      <h2 className="font-bold text-xl md:text-2xl tracking-[3px] uppercase">
-        <a href={url} className="no-underline hover:underline">
+    <a
+      href={url}
+      className={`group flex flex-col rounded-2xl overflow-hidden no-underline ${className}`}
+    >
+      <Image
+        src={imageUrl}
+        alt={imageAlt}
+        width={1280}
+        height={720}
+        className="w-full h-auto"
+      />
+      <div className="flex flex-col gap-3 flex-1 px-5 pt-5 pb-6">
+        <h3 className="font-extrabold text-xl md:text-2xl tracking-[3px] uppercase">
           {title}
-        </a>
-      </h2>
-      <p className="my-4 md:my-6 leading-[1.5em]">{description}</p>
-      <a href={url} className="block">
-        <Image
-          src={imageUrl}
-          alt={imageAlt}
-          width={800}
-          height={400}
-          className="w-full h-auto hover:outline-4 outline-zinc-900 -outline-offset-3"
-        />
-      </a>
-    </div>
+        </h3>
+        <p className="leading-[1.5em]">{description}</p>
+        <div className="mt-auto pt-2 flex items-center gap-3">
+          <span
+            className={`rounded-full px-5 py-2 font-bold text-sm tracking-[1px] uppercase group-hover:underline ${buttonClassName}`}
+          >
+            Play ▸
+          </span>
+          <span className="text-sm opacity-80">{domain}</span>
+        </div>
+      </div>
+    </a>
   );
+}
+
+function PluginItem({
+  title,
+  description,
+  imageUrl,
+  url,
+}: {
+  title: string;
+  description: string;
+  imageUrl: string;
+  url: string;
+}) {
+  return (
+    <a
+      href={url}
+      className="group grid content-start grid-cols-2 md:grid-cols-1 gap-3 md:gap-2 items-center md:items-start no-underline"
+    >
+      <Image
+        src={imageUrl}
+        alt=""
+        width={800}
+        height={400}
+        className="w-full aspect-[2/1] object-cover rounded-md border border-zinc-200 group-hover:outline-3 outline-zinc-900 -outline-offset-2"
+      />
+      <div>
+        <h3 className="font-bold text-sm tracking-[1px] uppercase group-hover:underline">
+          {title}
+        </h3>
+        <p className="text-sm text-zinc-600 leading-[1.4em]">{description}</p>
+      </div>
+    </a>
+  );
+}
+
+function FooterLinks({ links }: { links: { title: string; url: string }[] }) {
+  return links.map((link, i) => (
+    <span key={link.url}>
+      {i > 0 && <span className="mx-2 text-zinc-300">·</span>}
+      <a className="underline underline-offset-2" href={link.url}>
+        {link.title}
+      </a>
+    </span>
+  ));
 }
 
 export default function Home() {
@@ -43,187 +102,102 @@ export default function Home() {
         engineer currently at Figma
       </h1>
 
-      <h1 className="font-extrabold text-4xl md:text-5xl tracking-[7px] my-9 uppercase -ml-1">
-        Personal Projects
-      </h1>
-
-      <PortfolioItem
-        title="Figma Widget: Interactive Figmaland"
-        description={
-          <>
-            <a
-              className="underline"
-              href="https://twitter.com/minigolf2000/status/1542210618073255936"
-            >
-              Twitter GIF
-            </a>
-            . Visit a petting zoo, play hide and seek, race go karts, and more!
-            Powered by Widgets, Interactive Figmaland is a multiplayer
-            interactive world built and drawn during Figma&apos;s Maker Week.
-          </>
-        }
-        imageUrl="/figmaland.png"
-        imageAlt="interactive 2d pixel art world"
-        url="https://www.figma.com/community/widget/1117473220251961046/Interactive-Figmaland"
-      />
-
-      <PortfolioItem
-        title="Figma Plugin: 100 Race"
-        description={
-          <>
-            <a
-              className="underline"
-              href="https://twitter.com/minigolf2000/status/1403020118586662917"
-            >
-              Twitter GIF
-            </a>
-            . Race to the finish vs. up to 100 people on your own custom race
-            courses w/ my Figma Maker Week Plugin, 100 Race! This plugin takes
-            in user input and does some platforming calculations to move a
-            character. The viewport follows your character. The magic lies in
-            Figma&apos;s multiplayer, which lets up to 100 users run this plugin
-            simultaneously to edit nodes on the same page, creating a battle
-            royal race to the finish.
-          </>
-        }
-        imageUrl="/figma-100-race.png"
-        imageAlt="100 race"
-        url="https://www.figma.com/community/plugin/983446464948439880/100-Race"
-      />
-
-      <PortfolioItem
-        title="Figma Plugin: Zelda Maker"
-        description="A Figma Plugin to play and make Zelda worlds. Create worlds right in Figma, then run this Plugin to play them. Figma is a collaborative interface design tool, and level design for games is another type of design that benefits greatly from multiplayer collaboration."
-        imageUrl="/figma-zelda-maker.png"
-        imageAlt="zelda maker"
-        url="https://www.figma.com/community/plugin/846537436529611787/Zelda-Maker"
-      />
-
-      <PortfolioItem
-        title="Figma Plugin: Asteroids"
-        description='Play the arcade game Asteroids in Figma with friends! Supports multiplayer. This Figma Maker Week project was inspired by a coworker quote: "Figma is a multiplayer game engine that happens to be used for UX design".'
-        imageUrl="/figma-asteroids.png"
-        imageAlt="figma asteroids"
-        url="https://www.figma.com/community/plugin/916835579596798269/Figma-Asteroids"
-      />
-
-      <PortfolioItem
-        title="Gfychess"
-        description={
-          <>
-            A web tool to create and share chess animated GIFs, co-authored by{" "}
-            <a className="underline" href="https://github.com/caeleel">
-              Karl Jiang
-            </a>
-            . There are already excellent chess tools on the web for developing
-            your chess game including position evaluators, opening explorers,
-            endgame puzzles. What felt missing was a simple way to share an
-            exciting moment in a chess game with a friend.
-          </>
-        }
-        imageUrl="/gfychess.png"
-        imageAlt="user-inputted chess pgn and its generated animated gif"
-        url="https://www.gfychess.com/"
-      />
-
-      <PortfolioItem
-        title="Mad Castles"
-        description={
-          <>
-            After spending many hours playing the 2-4 player board game, The
-            Castles of Mad King Ludwig, co-author{" "}
-            <a className="underline" href="https://github.com/caeleel">
-              Karl Jiang
-            </a>{" "}
-            and I felt the need for an automated way to sum up castle points. We
-            created Mad Castles, an app that lets you input your castle and
-            tells you how many points it is worth.
-          </>
-        }
-        imageUrl="/mad-castles.png"
-        imageAlt="an example castle and its score"
-        url="https://www.madcastles.com/"
-      />
-
-      <PortfolioItem
-        title="Virtuoso Sheet Music"
-        description="Virtuoso is a concept sheet music device that is designed to replace a musician's sheet music library. Made for a UW Human Centered Design & Engineering class, our team gathered feedback from student musicians in an attempt to rediscover sheet music."
-        imageUrl="/virtuoso-sheet-music.png"
-        imageAlt="virtuoso sheet music prototype"
-        url="https://www.virtuososheetmusic.com/"
-      />
-
-      <PortfolioItem
-        title="Winsome Trading Inc"
-        description={
-          <>
-            Winsome, a furniture distributor, needed customers to be able to
-            easily view their products online. Using NextJS / Vercel, and
-            fetching data from Salsify PIM, I implemented{" "}
-            <a className="underline" href="https://www.alyssachow.com/">
-              Alyssa Chow
-            </a>
-            &apos;s visual design and brought Winsome&apos;s furniture listings
-            to the web.
-          </>
-        }
-        imageUrl="/winsome.png"
-        imageAlt="winsome homepage"
-        url="http://www.winsomewood.com/"
-      />
-
-      <PortfolioItem
-        title="Seattle Band Map"
-        description={
-          <>
-            Featured in a{" "}
-            <a
-              className="underline"
-              href="https://www.wired.com/2011/03/seattle-band-map/"
-            >
-              Wired.com article
-            </a>
-            , Seattle Band Map is an experimental map of local bands. Powered by
-            GraphViz, the user-submitted bands connect to each other if they
-            have played together or have shared a band member. The result is a
-            sprawling spiderweb of the Seattle music scene.
-          </>
-        }
-        imageUrl="/seattle-band-map.png"
-        imageAlt="seattle band map"
-        url="https://www.seattlebandmap.com/"
-      />
-
-      <div className="flex items-center justify-end mb-12">
-        <svg
-          className="mr-4"
-          width="43"
-          height="79"
-          viewBox="0 0 43 79"
-          fill="none"
-        >
-          <path
-            d="M3 3L39 39.5L3 76"
-            stroke="#BBBBBB"
-            strokeWidth="7"
-            strokeLinejoin="round"
+      <section>
+        <h2 className="font-extrabold text-sm tracking-[5px] uppercase mb-4">
+          Escape Cats · two browser games
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <GameCard
+            title="Hex Clicker"
+            description="A cookie clicker starring Hex. Pet her for mice, build a mouse empire, then put her to sleep and watch her dreams spell out a secret word."
+            imageUrl="/hex-clicker.png"
+            imageAlt="Hex the black cat over a pink polka-dot sky, with the upgrade shop open below"
+            url="https://hexxygon.com/"
+            domain="hexxygon.com"
+            className="bg-[#f4c3c5] text-[#2a1719]"
+            buttonClassName="bg-[#2a1719] text-white"
           />
-        </svg>
-        <a
-          className="underline"
-          href="https://www.linkedin.com/in/golfsinteppadon/"
-        >
-          LinkedIn
-        </a>
-        <span className="mx-2">/</span>
-        <a className="underline" href="https://github.com/minigolf2000/">
-          Github
-        </a>
-        <span className="mx-2">/</span>
-        <a className="underline" href="https://figma.com/@minigolf2000/">
-          Figma
-        </a>
-      </div>
+          <GameCard
+            title="Goomba Glider"
+            description="A line rider where the track is silly bandz. Stretch four bands, hit play, and steer Goomba past every watering can to the plant."
+            imageUrl="/goomba-glider.png"
+            imageAlt="Goomba the orange cat on a board, with a watering can and a potted plant against a night sky"
+            url="https://g00.mba/"
+            domain="g00.mba"
+            className="bg-[#1c1030] text-[#f2eaff]"
+            buttonClassName="bg-[#4fd1c5] text-[#12091f]"
+          />
+        </div>
+        <p className="text-sm text-zinc-600 mt-4">
+          Both started as four-player co-op puzzles for a real escape room, and
+          now run solo in any browser.
+        </p>
+      </section>
+
+      <section className="mt-14 md:mt-20 mb-12">
+        <h2 className="font-extrabold text-sm tracking-[5px] uppercase mb-4">
+          Games built as Figma Plugins
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <PluginItem
+            title="Figmaland"
+            description="A multiplayer pixel world with a petting zoo, hide and seek and go karts"
+            imageUrl="/figmaland.png"
+            url="https://www.figma.com/community/widget/1117473220251961046/Interactive-Figmaland"
+          />
+          <PluginItem
+            title="100 Race"
+            description="A platformer race for up to 100 people in one file"
+            imageUrl="/figma-100-race.png"
+            url="https://www.figma.com/community/plugin/983446464948439880/100-Race"
+          />
+          <PluginItem
+            title="Zelda Maker"
+            description="Draw a Zelda world on the canvas, then play it"
+            imageUrl="/figma-zelda-maker.png"
+            url="https://www.figma.com/community/plugin/846537436529611787/Zelda-Maker"
+          />
+          <PluginItem
+            title="Asteroids"
+            description="The arcade game, playable with friends inside Figma"
+            imageUrl="/figma-asteroids.png"
+            url="https://www.figma.com/community/plugin/916835579596798269/Figma-Asteroids"
+          />
+        </div>
+      </section>
+
+      <footer className="border-t border-zinc-200 pt-6 pb-12 text-sm text-zinc-500 flex flex-wrap justify-between gap-x-8 gap-y-3">
+        <p>
+          Other projects:{" "}
+          <FooterLinks
+            links={[
+              { title: "Gfychess", url: "https://www.gfychess.com/" },
+              { title: "Mad Castles", url: "https://www.madcastles.com/" },
+              {
+                title: "Virtuoso Sheet Music",
+                url: "https://www.virtuososheetmusic.com/",
+              },
+              { title: "Winsome", url: "http://www.winsomewood.com/" },
+              {
+                title: "Seattle Band Map",
+                url: "https://www.seattlebandmap.com/",
+              },
+            ]}
+          />
+        </p>
+        <p>
+          <FooterLinks
+            links={[
+              {
+                title: "LinkedIn",
+                url: "https://www.linkedin.com/in/golfsinteppadon/",
+              },
+              { title: "Github", url: "https://github.com/minigolf2000/" },
+              { title: "Figma", url: "https://figma.com/@minigolf2000/" },
+            ]}
+          />
+        </p>
+      </footer>
     </div>
   );
 }
