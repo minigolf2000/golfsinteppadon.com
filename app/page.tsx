@@ -126,7 +126,7 @@ function PluginItem({
   return (
     <a
       href={url}
-      className="grid content-start grid-cols-2 md:grid-cols-1 gap-3 md:gap-2 items-center md:items-start rounded-xl border border-zinc-200 bg-white p-2 md:pb-3 no-underline transition duration-150 hover:-translate-y-0.5 hover:border-zinc-900 hover:shadow-lg focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+      className="grid content-start grid-cols-2 md:grid-cols-1 gap-3 md:gap-2 items-center md:items-start rounded-xl border border-[#2a2833] bg-[#17161d] p-2 md:pb-3 no-underline transition duration-150 hover:-translate-y-0.5 hover:border-[#8d8a97] hover:shadow-lg hover:shadow-black/50 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#f4f2f7] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
       <Image
         src={imageUrl}
@@ -139,7 +139,7 @@ function PluginItem({
         <h3 className="font-bold text-sm tracking-[1px] uppercase">
           {title}
         </h3>
-        <p className="text-sm text-zinc-600 leading-[1.4em]">{description}</p>
+        <p className="text-sm text-[#a9a6b3] leading-[1.4em]">{description}</p>
       </div>
     </a>
   );
@@ -148,7 +148,7 @@ function PluginItem({
 function FooterLinks({ links }: { links: { title: string; url: string }[] }) {
   return links.map((link, i) => (
     <span key={link.url}>
-      {i > 0 && <span className="mx-2 text-zinc-300">·</span>}
+      {i > 0 && <span className="mx-2 text-[#4a4854]">·</span>}
       <a className="underline underline-offset-2" href={link.url}>
         {link.title}
       </a>
@@ -225,7 +225,7 @@ export default function Home() {
               ],
             }}
             theme={{
-              card: "bg-[#1c1030] text-[#f2eaff]",
+              card: "bg-[#1c1030] text-[#f2eaff] ring-1 ring-[#33245a]",
               ink: "text-[#f2eaff]",
               muted: "text-[#f2eaff]/65",
               rule: "border-[#f2eaff]/15",
@@ -268,7 +268,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-zinc-200 pt-6 pb-12 text-sm text-zinc-500 flex flex-wrap justify-between gap-x-8 gap-y-3">
+      <footer className="border-t border-[#2a2833] pt-6 pb-12 text-sm text-[#8d8a97] flex flex-wrap justify-between gap-x-8 gap-y-3">
         <p>
           Other projects:{" "}
           <FooterLinks
