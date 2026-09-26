@@ -215,7 +215,7 @@ export default function Home() {
               name: "Goomba",
               photo: "/goomba.jpg",
               photoAlt: "Goomba, a brown tabby cat, looking up at the camera",
-              bio: "Brown tabby. A very agile cat who can jump to any shelf or ledge, and has a penchant for eating houseplants. Exhibits human emotions like longing and jealousy.",
+              bio: "Brown tabby. An agile cat who can jump to any shelf, and has a penchant for eating houseplants. Exhibits human emotions like longing and jealousy.",
               traits: [
                 { label: "Cuddly", score: 5 },
                 { label: "Agility", score: 5 },
