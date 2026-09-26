@@ -171,7 +171,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <GameCard
             title="Hex Clicker"
-            description="Pet Hex, build a mouse empire, find out what Hex is dreaming about."
+            description="Pet Hex, build a mouse empire, and find out what Hex is dreaming about."
             image={{
               src: "/hex-clicker.png",
               alt: "Hex the black cat over a pink polka-dot sky, with the upgrade shop open below",
@@ -202,11 +202,12 @@ export default function Home() {
           />
           <GameCard
             title="Goomba Glider"
+            description="Line Rider inspired puzzle game. Help Goomba water the plants."
             image={{
               src: "/goomba-glider.png",
-              alt: "Goomba Glider's title screen: help Goomba water the plant. Drag to place a band, tap it to take it back.",
-              width: 1200,
-              height: 900,
+              alt: "Goomba the orange cat on a board, with a watering can and a potted plant against a night sky",
+              width: 1280,
+              height: 720,
             }}
             url="https://g00.mba/"
             domain="g00.mba"
