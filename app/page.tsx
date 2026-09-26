@@ -166,7 +166,7 @@ export default function Home() {
 
       <section>
         <h2 className="font-extrabold text-sm tracking-[5px] uppercase mb-4">
-          Escape Cats · two browser games
+          Escape Cats Browser Games
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <GameCard
@@ -175,8 +175,8 @@ export default function Home() {
             image={{
               src: "/hex-clicker.png",
               alt: "Hex the black cat over a pink polka-dot sky, with the upgrade shop open below",
-              width: 1280,
-              height: 720,
+              width: 1600,
+              height: 900,
             }}
             url="https://hexxygon.com/"
             domain="hexxygon.com"
@@ -215,7 +215,7 @@ export default function Home() {
               name: "Goomba",
               photo: "/goomba.jpg",
               photoAlt: "Goomba, a brown tabby cat, looking up at the camera",
-              bio: "Brown tabby. An agile cat who can jump to any shelf, and has a penchant for eating houseplants. Exhibits human emotions like longing and jealousy.",
+              bio: "Brown tabby. Can jump to any shelf, and has a penchant for eating houseplants. Exhibits human emotions like longing and jealousy.",
               traits: [
                 { label: "Cuddly", score: 5 },
                 { label: "Agility", score: 5 },
