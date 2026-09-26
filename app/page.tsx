@@ -51,10 +51,11 @@ function GameCard({
   };
 }) {
   return (
-    <article
-      className={`flex flex-col gap-4 rounded-2xl p-3 pb-5 ${theme.card}`}
+    <a
+      href={url}
+      className={`group flex flex-col gap-4 rounded-2xl p-3 pb-5 no-underline transition duration-150 hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#f4f2f7] motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${theme.card}`}
     >
-      <a href={url} className="block overflow-hidden rounded-lg">
+      <div className="overflow-hidden rounded-lg">
         <Image
           src={image.src}
           alt={image.alt}
@@ -62,23 +63,20 @@ function GameCard({
           height={image.height}
           className="w-full h-auto"
         />
-      </a>
+      </div>
       <div className="px-1.5">
         <h3 className="font-extrabold text-2xl tracking-[3px] uppercase leading-tight">
-          <a href={url} className="no-underline">
-            {title}
-          </a>
+          {title}
         </h3>
         {description && (
           <p className="mt-2 leading-[1.5em]">{description}</p>
         )}
       </div>
-      <a
-        href={url}
-        className={`mx-1.5 rounded-full px-4 py-3 text-center font-bold text-sm tracking-[1px] uppercase no-underline transition-colors duration-150 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#ff3d8b] ${theme.button}`}
+      <span
+        className={`mx-1.5 rounded-full px-4 py-3 text-center font-bold text-sm tracking-[1px] uppercase transition-colors duration-150 ${theme.button}`}
       >
         Play at {domain} ▸
-      </a>
+      </span>
       <div
         className={`mx-1.5 mt-auto flex flex-col gap-2 border-t pt-4 ${theme.rule}`}
       >
@@ -108,7 +106,7 @@ function GameCard({
           ))}
         </p>
       </div>
-    </article>
+    </a>
   );
 }
 
@@ -193,12 +191,12 @@ export default function Home() {
               ],
             }}
             theme={{
-              card: "bg-[#f4c3c5] text-[#2a1719]",
+              card: "bg-[#f4c3c5] text-[#2a1719] hover:bg-[#f8d2d4]",
               ink: "text-[#2a1719]",
               muted: "text-[#2a1719]/65",
               rule: "border-[#2a1719]/15",
               button:
-                "bg-[#2a1719] text-white hover:bg-[#ff3d8b] hover:text-white",
+                "bg-[#2a1719] text-white group-hover:bg-[#ff3d8b]",
             }}
           />
           <GameCard
@@ -225,12 +223,12 @@ export default function Home() {
               ],
             }}
             theme={{
-              card: "bg-[#1c1030] text-[#f2eaff] ring-1 ring-[#33245a]",
+              card: "bg-[#1c1030] text-[#f2eaff] ring-1 ring-[#33245a] hover:bg-[#241642]",
               ink: "text-[#f2eaff]",
               muted: "text-[#f2eaff]/65",
               rule: "border-[#f2eaff]/15",
               button:
-                "bg-[#4fd1c5] text-[#12091f] hover:bg-[#ffd23f] hover:text-[#12091f]",
+                "bg-[#4fd1c5] text-[#12091f] group-hover:bg-[#ffd23f]",
             }}
           />
         </div>
