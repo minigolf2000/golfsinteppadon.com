@@ -15,6 +15,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#0e0d12",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -24,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>
+      <body className={`${montserrat.className} bg-[#0e0d12] text-[#f4f2f7]`}>
         {children}
         <Analytics />
       </body>
