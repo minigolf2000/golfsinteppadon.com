@@ -126,16 +126,16 @@ function PluginItem({
   return (
     <a
       href={url}
-      className="grid content-start grid-cols-2 md:grid-cols-1 gap-3 md:gap-2 items-center md:items-start rounded-xl border border-[#2a2833] bg-[#17161d] p-2 md:pb-3 no-underline transition duration-150 hover:-translate-y-0.5 hover:border-[#8d8a97] hover:shadow-lg hover:shadow-black/50 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#f4f2f7] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+      className="grid content-start grid-cols-[128px_1fr] md:grid-cols-1 items-stretch md:items-start overflow-hidden rounded-xl bg-[#17161d] no-underline transition duration-150 hover:-translate-y-0.5 hover:bg-[#1f1e27] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#f4f2f7] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
       <Image
         src={imageUrl}
         alt=""
         width={800}
         height={400}
-        className="w-full aspect-[2/1] object-cover rounded-md"
+        className="w-full h-full min-h-16 object-cover object-left-bottom md:h-auto md:aspect-[2/1]"
       />
-      <div className="md:px-1">
+      <div className="self-center px-3 py-2.5 md:px-3.5 md:pt-3 md:pb-4">
         <h3 className="font-bold text-sm tracking-[1px] uppercase">
           {title}
         </h3>
@@ -249,7 +249,7 @@ export default function Home() {
           />
           <PluginItem
             title="100 Race"
-            description="A platformer race for up to 100 people in one file"
+            description="Platforming racer with up to 100 people"
             imageUrl="/figma-100-race.png"
             url="https://www.figma.com/community/plugin/983446464948439880/100-Race"
           />
