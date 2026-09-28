@@ -72,7 +72,9 @@ img {
 }
 
 .intro {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin-block: 3rem;
   font-size: 1.5rem;
   line-height: 150%;
@@ -80,9 +82,12 @@ img {
   letter-spacing: 3px;
 }
 
-.intro .wave {
-  position: absolute;
-  left: -4rem;
+.intro .logo {
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: #fff;
 }
 
 .section-title {
